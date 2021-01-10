@@ -1,6 +1,6 @@
 <?php
 
-/**
+/**bcaaaaa
  * Laravel - A PHP Framework For Web Artisans
  *
  * @package  Laravel
@@ -58,3 +58,4 @@ $response = $kernel->handle(
 $response->send();
 
 $kernel->terminate($request, $response);
+adsadsads
