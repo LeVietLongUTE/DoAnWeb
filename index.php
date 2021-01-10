@@ -1,6 +1,6 @@
 <?php
 
-/** abcdae đã thêm
+/** 
  * Laravel - A PHP Framework For Web Artisans
  *
  * @package  Laravel
