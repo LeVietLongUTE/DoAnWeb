@@ -250,59 +250,89 @@
 		</div>
 	</section>
 	
-	<footer id="footer"><!--Footer-->
-		<div class="lienhe">
-			<h2>Liên hệ</h2>
-			<div class="item">
-				<div class="icon_lh">
-					<i class="fa fa-map-marker-alt"></i>
-				</div>
-				<div class="title">
-					<p>48 Cao Thắng <br> Trường đại học sư phạm kỹ thuật</p>
-				</div>
-			</div>
-			<div class="item">
-				<div class="icon_lh">
-					<i class="fas fa-phone-square-alt"></i>
-				</div>
-				<div class="title">
-					<p>(+84)383425354 <br>(+84)702076081</p>
-				</div>
-			</div>
-			<div class="item">
-				<div class="icon_lh">
-					<i class="fas fa-envelope-open-text"></i>
-				</div>
-				<div class="title">
-					<p>ute@ute.udn.vn <br>ute123@gmail.com</p>
-				</div>
-			</div>
-		</div>
-		<div class="account">
-			<h2>Tài khoản</h2>
-			<p><a href="#"><i class="fa fa-caret-right"></i>Tài khoản</a></p>
-			<p><a href="#"><i class="fa fa-caret-right"></i>Giở hàng</a></p>
-			<p><a href="#"><i class="fa fa-caret-right"></i>Đăng nhập</a></p>
-			<p><a href="#"><i class="fa fa-caret-right"></i>Thanh toán</a></p>
-		</div>
-		<div class="Danhmuc">
-			<h2>Danh mục</h2>
-			<p><a href="#"><i class="fa fa-caret-right"></i>PETS</a></p>
-			<p><a href="#"><i class="fa fa-caret-right"></i>Thức ăn</a></p>
-			<p><a href="#"><i class="fa fa-caret-right"></i>Phụ kiện</a></p>
-		</div>
-		<div class="mxh">
-			<h2>Mạng xã hội</h2>
-			<div class="icon_mxh">
-				<a href="#"><img src="{{('public/frontend/images/facebook_ic.jpg')}}"></a>
-			</div>
-			<div class="icon_mxh">
-				<a href="#"><img src="{{('public/frontend/images/instagram_ic.png')}}"></a>
-			</div>
-			<div class="icon_mxh">
-				<a href="#"><img src="{{('public/frontend/images/zalos_ic.png')}}"></a>
-			</div>
+	<footer id="footer-two"><!--Footer-->
+		 <div class="footer-top section-padding center-block">
+	        <div class="footer-dsc ">
+	            <div class="container">
+	                <div class="row">
+	                    <div class="col-xs-12 col-sm-6 col-md-3 ">
+	                        <div class="single-text">
+	                            <div class="footer-title">
+	                                <h4>Liên hệ</h4>
+	                            </div>
+	                            <div class="item">
+									<div class="icon_lh">
+										<i class="fa fa-map-marker-alt"></i>
+									</div>
+									<div class="title">
+										<p>48 Cao Thắng <br> Trường đại học sư phạm kỹ thuật</p>
+									</div>
+								</div>
+								<div class="item">
+									<div class="icon_lh">
+										<i class="fas fa-phone-square-alt"></i>
+									</div>
+									<div class="title">
+										<p>(+84)383425354 <br>(+84)702076081</p>
+									</div>
+								</div>
+								<div class="item">
+									<div class="icon_lh">
+										<i class="fas fa-envelope-open-text"></i>
+									</div>
+									<div class="title">
+										<p>ute@ute12.udn.vn <br>ute123@gmail.com</p>
+									</div>
+								</div>
+	                        </div>
+	                    </div>
+	                <div class="col-xs-6 col-sm-3 col-md-3 wide-mobile">
+                        <div class="single-text">
+                            <div class="footer-title">
+                                <h4>Tài khoản</h4>
+                            </div>
+                            <div class="footer-menu">
+								<ul>
+									<p><a href="#"><i class="fa fa-caret-right"></i>Tài khoản</a></p>
+									<p><a href="#"><i class="fa fa-caret-right"></i>Giở hàng</a></p>
+									<p><a href="#"><i class="fa fa-caret-right"></i>Đăng nhập</a></p>
+									<p><a href="#"><i class="fa fa-caret-right"></i>Thanh toán</a></p>
+								</ul>
+							</div>
+                        </div>
+                    </div>
+					
 
+					<div class="col-xs-6 col-sm-3 col-md-3 wide-mobile">
+                        <div class="single-text">
+                            <div class="footer-title">
+                                <h4>Danh mục</h4>
+                            </div>
+                            <div class="footer-menu">
+		                        <ul>
+		                        	<p><a href="#"><i class="fa fa-caret-right"></i>PETS</a></p>
+									<p><a href="#"><i class="fa fa-caret-right"></i>Thức ăn</a></p>
+									<p><a href="#"><i class="fa fa-caret-right"></i>Phụ kiện</a></p>
+		                        </ul>
+							 </div>
+                        </div>
+					</div>
+						<div class="mxh">
+							<h2>Mạng xã hội</h2>
+							<div class="icon_mxh">
+								<a href="https://www.facebook.com/"><img src="{{('public/frontend/images/facebook_ic.jpg')}}"></a>
+							</div>
+							<div class="icon_mxh">
+								<a href="https://www.instagram.com/"><img src="{{('public/frontend/images/instagram_ic.png')}}"></a>
+							</div>
+							<div class="icon_mxh">
+								<a href="https://id.zalo.me/account?continue=https%3A%2F%2Fchat.zalo.me%2F"><img src="{{('public/frontend/images/zalos_ic.png')}}"></a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</footer>
 
