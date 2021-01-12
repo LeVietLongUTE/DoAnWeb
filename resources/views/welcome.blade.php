@@ -21,8 +21,8 @@
 </head><!--/head-->
 
 <body>
-		@include('frontend.header')
-	
+
+@include('frontend.header')
 	<section id="slider"><!--slider-->
 		<center>
 		<div class="slide_view">

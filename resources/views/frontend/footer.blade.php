@@ -1,4 +1,7 @@
+
+
 <footer id="footer-two"><!--Footer-->
+
 		 <div class="footer-top section-padding center-block ">
 	        <div class="footer-dsc ">
 	            <div class="container">
@@ -114,4 +117,4 @@
         	<div class="text-center">
                     <p>&copy; Đồ Án Tốt Nghiệp Môn Web Nâng Cao 2021</p>
             </div>
-     </div>
+	 </div>

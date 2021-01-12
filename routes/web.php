@@ -88,3 +88,9 @@ Route::POST('/edit-product/{product_id}','productController@edit_product');
 
 Route::POST('/update-product/{product_id}','productController@update_product');
 Route::GET('/delete-product/{product_id}','productController@delete_product');
+
+
+//Gio thieu
+Route::GET('/gioithieus','HomeController@gioithieu');
+Route::GET('/cho','HomeController@gioithieucho');
+Route::GET('/meo','HomeController@gioithieumeo');

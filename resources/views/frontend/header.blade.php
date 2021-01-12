@@ -1,3 +1,4 @@
+
 <header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
 			<div class="container">
@@ -65,10 +66,10 @@
 								<li><a href="#">Mua Hàng</a>	</li> 						
 								<li><a href="#">Thanh Toán</a>	</li> 
 								
-								<li class="dropdown"><a href="#">Giới thiệu<i class="fa fa-angle-down"></i></a>
+								<li class="dropdown"><a href="{{URL::to('/gioithieus')}}">Giới thiệu<i class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="#">Chó</a></li> 
-										<li><a href="#">Mèo</a></li> 
+										<li><a href="{{URL::to('/cho')}}">Chó</a></li> 
+										<li><a href="{{URL::to('/meo')}}">Mèo</a></li> 
 											
 									</ul>
 								
