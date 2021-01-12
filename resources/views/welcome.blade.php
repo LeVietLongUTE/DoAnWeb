@@ -84,21 +84,11 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.php" class="active">Trang Chủ</a></li>
-								<li class="dropdown"><a href="#">Giới thiệu<i class="fa fa-angle-down"></i></a>
-									<ul role="menu" class="sub-menu">
-										<li><a href="#">Liên hệ</a></li>
-										<li><a href="#">Product Details</a></li> 
-										<li><a href="#">Checkout</a></li> 
-										<li><a href="#">Cart</a></li> 
-										<li><a href="#">Login</a></li> 
-									</ul>
-								</li> 
-								<li class="dropdown"><a href="#">Tin tức</a>
-									
-								</li> 
-								<li><a href="C:/xampp/htdocs/ShopThuCung/404.html">404</a></li>
-								<li><a href="#">Contact</a></li>
+								<li><a href="index.php" class="active">Trang Chủ</a></li>					
+								<li><a href="#">Mua Hàng</a>	</li> 						
+								<li><a href="#">Thanh Toán</a>	</li> 
+								<li><a href="#">Giới Thiệu</a>	</li> 
+								<li><a href="#">Liên Hệ</a>	</li> 			
 							</ul>
 						</div>
 					</div>
@@ -155,7 +145,7 @@
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
-						<h2>Thể Loại</h2>
+						<h2>Danh Mục Sản Phẩm</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 							<div class="panel panel-default">
 								<div class="panel-heading">
@@ -363,7 +353,7 @@
 	</footer>
 	 <div class="footer-bottom">
         	<div class="text-center">
-                    <p>&copy; Đồ Án Tốt Nghiệp Môn Web Nâng Cao 2020</p>
+                    <p>&copy; Đồ Án Tốt Nghiệp Môn Web Nâng Cao 2021</p>
             </div>
      </div>
   
