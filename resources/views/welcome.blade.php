@@ -302,7 +302,6 @@
 			<div class="icon_mxh">
 				<a href="#"><img src="{{('public/frontend/images/zalos_ic.png')}}"></a>
 			</div>
-
 		</div>
 	</footer>
 

@@ -29,7 +29,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 <section id="container">
 <!--header start-->
-<header class="header fixed-top clearfix">
+<header class="header fixed-top clearfix" style="opacity: 0.8">
 <!--logo start-->
 <div class="brand">
     <a href="{{URL::to("/dashboard")}}" class="logo">
@@ -88,7 +88,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span>Tổng quan</span>
                     </a>
                 </li>
-                
+                <li class="sub-menu">
+                    <a  href="">
+                        <i class="fa fa-users"></i>
+                        <span>Quản lý người dùng</span>
+                    </a>
+                    <ul class="sub">
+						<li><a href="{{URL::to('/add-category-product')}}">Thêm người dùng</a></li>
+						<li><a href="{{URL::to('/list-category')}}">List người dùng</a></li>
+                    </ul>
+                </li>
                 <li class="sub-menu">
                     <a  href="">
                         <i class="fa fa-book"></i>
@@ -102,22 +111,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li class="sub-menu">
                     <a href="#">
                         <i class="fa fa-briefcase"></i>
-                        <span>Danh mục sản phẩm</span>
+                        <span>Loại sản phẩm</span>
                     </a>
                     <ul class="sub">
 						<li><a href="{{URL::to('/add-breed-product')}}">Thêm loại sản phẩm</a></li>
 						<li><a href="{{URL::to('/list-breed')}}">List loại sản phẩm</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="fontawesome.html">
-                        <i class="fa fa-bullhorn"></i>
-                        <span>Font awesome </span>
+                <li class="sub-menu">
+                    <a href="#">
+                        <i class="fa fa-archive"></i>
+                        <span>Sản phẩm</span>
                     </a>
+                    <ul class="sub">
+						<li><a href="{{URL::to('/add-product')}}">Thêm sản phẩm</a></li>
+						<li><a href="{{URL::to('/list-product')}}">List sản phẩm</a></li>
+                    </ul>
                 </li>
-                
                
-            </ul>           
+                <li>
+                   
+                    <a href="#">
+                        <i class="fa fa-archive"></i>
+                        <span>Sản phẩm</span>
+                    </a>
+                    <ul>
+                    
+                        <li><a href="{{URL::to('/add-product')}}">Thêm sản phẩm</a></li>
+                        <li><a href="{{URL::to('/list-product')}}">List sản phẩm</a></li>
+                    </ul>
+                </li>
+               
+            </ul>  
+                     
          </div>
         <!-- sidebar menu end-->
     </div>

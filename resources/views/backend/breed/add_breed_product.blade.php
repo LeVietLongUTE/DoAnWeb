@@ -27,9 +27,9 @@
                             {{ csrf_field() }}
                         <div class="form-group">
                             <label>Danh mục sản phẩm</label>
-                            <select name="category_name" class="form-control input-sm m-bot15">
+                            <select name="category_id" class="form-control input-sm m-bot15">
                                 @foreach ($list_category as $key => $category)
-                                <option value="{{$category->category_name}}">{{$category->category_name}}</option>
+                                <option value="{{$category->category_id}}">{{$category->category_name}}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -20,16 +20,18 @@ Route::get('/trang-chu','HomeController@index');
 /* ---- Back End ---- */
 
 
-Route::get('/login','loginController@index');
-Route::get('/register','registerController@index');
+Route::get('/login','loginController@show_login');
+Route::get('/register','loginController@show_register');
 Route::get('/admin-layout','adminLayoutController@index');
 
 Route::get('/dashboard','adminLayoutController@show_dashboard');
 
 Route::POST('/dashboard','loginController@loginadmin');
 
-Route::POST('/registeryet','regiseterController@register');
+Route::POST('/registeryet','loginController@register');
 Route::get('/logout','loginController@logout');
+
+
 //Category
 //add category
 Route::get('/add-category-product','adminLayoutController@show_formAddCategory');
@@ -54,15 +56,35 @@ Route::get('/add-breed-product','breedController@show_formAddBreed');
 Route::POST('/add-breed-product','breedController@show_formAddBreed');
 Route::POST('/save-breed-product','breedController@save_breedProduct');
 
-//list category
+//list Breed
 Route::get('/list-breed','breedController@show_listBreed');
 Route::POST('/list-breed','breedController@show_listBreed');
-//status category
+//status Breed
 Route::get('/unactive-breed/{breed_product_id}','breedController@un_active_breed');
 Route::get('/active-breed/{breed_product_id}','breedController@active_breed');
-//edit category
+//edit Breed
 Route::get('/edit-breed/{breed_product_id}','breedController@edit_breed_product');
 Route::POST('/edit-breed/{breed_product_id}','breedController@edit_breed_product');
 
 Route::POST('/update-breed-product/{breed_product_id}','breedController@update_breedProduct');
 Route::GET('/delete-breed/{breed_product_id}','breedController@delete_breed_product');
+
+
+//product
+//add product
+Route::get('/add-product','productController@show_formAddproduct');
+Route::POST('/add-product','productController@show_formAddproduct');
+Route::POST('/save-product','productController@save_Product');
+
+//list product
+Route::get('/list-product','productController@show_listProduct');
+Route::POST('/list-product','productController@show_listProduct');
+//status Breed
+Route::get('/unactive-product/{product_id}','productController@un_active_product');
+Route::get('/active-product/{product_id}','productController@active_product');
+//edit Breed
+Route::get('/edit-product/{product_id}','productController@edit_product');
+Route::POST('/edit-product/{product_id}','productController@edit_product');
+
+Route::POST('/update-product/{product_id}','productController@update_product');
+Route::GET('/delete-product/{product_id}','productController@delete_product');

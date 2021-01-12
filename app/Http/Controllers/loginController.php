@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use App\User;
 
 session_start();
 class loginController extends Controller
 {
     //chuyen tran login
-    public function index() {
+    public function show_login() {
         return view('login');
     }
     public function loginadmin(Request $request) {
@@ -31,6 +32,26 @@ class loginController extends Controller
     public function logout(){
         Session::put('name',null);
         return Redirect::to('/login');
+    }
+    public function show_register() {
+        return view('register');
+    }
+    public function register(array $data)
+    {
+        # code...
+        $this->validate(request(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        
+        return User::create(Request([
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'name' => $data['name'],
+            'level' => 0
+        ]));
     }
 }
 ?>
