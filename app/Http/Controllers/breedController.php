@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
+use function Ramsey\Uuid\v1;
+
 class breedController extends Controller
 {
     public function show_formAddBreed() {
@@ -18,8 +20,9 @@ class breedController extends Controller
     public function save_breedProduct(Request $request) {
 
         $data = array();
+        //$data__ = DB::table('tb_category_product')->where('category_name',$request->category_name)->get();
         $data = [
-            'category_name' =>$request->category_name, 
+            'category_id' =>$request->category_id, 
             'breed_name' => $request->nameBreed,
             'breed_description' => $request->description,
             'breed_status' => $request->breed_status
@@ -41,7 +44,9 @@ class breedController extends Controller
 
     public function show_listBreed() {
         
-       $list_breed = DB::table('tb_breed_product')->get();
+       $list_breed = DB::table('tb_breed_product')
+       ->join('tb_category_product','tb_breed_product.category_id','=','tb_category_product.category_id')
+       ->select('tb_breed_product.*','category_name')->get();
        $manager_breed = view('backend.breed.list_breed_product')->with('list_breed',$list_breed);
         return view('admin_layout')->with('backend.breed.list_breed_product',$manager_breed);
     }
@@ -62,26 +67,30 @@ class breedController extends Controller
     //Chỉnh sửa breed
     public function edit_breed_product($breed_product_id) {
         $list_category = DB::table('tb_category_product')->get();
-        $manager_category = view('backend.breed.edit_breed_product')->with('list_category',$list_category);
-
-        $edit_breed = DB::table('tb_breed_product')->where('breed_id',$breed_product_id)->get();
-        $manager_breed = view('backend.breed.edit_breed_product')->with('edit_breed',$edit_breed);
-      
+        $edit_breed = DB::table('tb_breed_product')
+        ->join('tb_category_product','tb_breed_product.category_id','=','tb_category_product.category_id')
+        ->select('tb_breed_product.*','category_name')-> where('breed_id',$breed_product_id)->get();
+        $manager_breed = view('backend.breed.edit_breed_product')->with('edit_breed',$edit_breed)->with('list_category',$list_category);
+       
         return view('admin_layout')->with('backend.breed.edit_breed_product',$manager_breed);
 
     }
-    public function update_categoryProduct ( Request $request, $category_product_id) {
+    public function update_breedProduct ( Request $request, $breed_product_id) {
+        $data__ = DB::table('tb_category_product')->where('category_name',$request->category_name)->get('category_id')->first();
+        
         $data = [
-            'category_name' => $request->nameCategory,
-            'category_descript' =>$request->description
+            'category_id' => $request->category_name,
+            'breed_name' => $request->nameBreed,
+            'breed_description' =>$request->description
         ];
-        if (DB::table('tb_category_product')->where('category_name',$request->nameCategory)->first()){
-            Session::put('error','Tên danh mục đã tồn tại!');
-            return Redirect::to('/edit-category/'.$category_product_id);
+
+        if (DB::table('tb_breed_product')->where('breed_name',$request->nameBreed)->first()){
+            Session::put('error','Tên loại sản phẩm đã tồn tại!');
+            return Redirect::to('/edit-breed/'.$breed_product_id);
         }else{
-            DB::table('tb_category_product')->where('category_id',$category_product_id)->update($data);
-            Session::put('message','Cập nhật danh mục sản phẩm thành công');
-            return Redirect::to('list-category');
+            DB::table('tb_breed_product')->where('breed_id',$breed_product_id)->update($data);
+            Session::put('message','Cập nhật loại sản phẩm thành công');
+            return Redirect::to('list-breed');
         }
     }
 

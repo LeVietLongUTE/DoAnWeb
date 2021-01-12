@@ -69,7 +69,7 @@ class adminLayoutController extends Controller
     //Chỉnh sửa category
     public function edit_category_product($category_product_id) {
         $edit_category = DB::table('tb_category_product')->where('category_id',$category_product_id)->get();
-        $manager_category = view('backend.edit_category_product')->with('edit_category',$edit_category);
+        $manager_category = view('backend.category.edit_category_product')->with('edit_category',$edit_category);
 
         return view('admin_layout')->with('backend.category.edit_category_product',$manager_category);
 

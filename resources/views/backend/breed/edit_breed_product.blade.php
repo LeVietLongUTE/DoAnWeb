@@ -16,11 +16,10 @@ use Illuminate\Support\Facades\DB;
 			Session::put('message',null);
 		    }	
         }
-
 	?>
             <section class="panel">
                 <header class="panel-heading">
-                    Chỉnh sửa danh mục sản phẩm
+                    Chỉnh sửa loại sản phẩm
                 </header>
                 <div class="panel-body">
                     <div class="position-center">
@@ -30,13 +29,13 @@ use Illuminate\Support\Facades\DB;
                             <div class="form-group">
                                 <label>Danh mục sản phẩm</label>
                                 <select name="category_name" class="form-control input-sm m-bot15">
-                                    {{-- @foreach ($list_category as $keyCate => $category)
-                                    <option value="{{$category->category_name}}">{{$category->category_name}}</option>
-                                    @endforeach --}}
+                                    @foreach ($list_category as $key => $category)
+                                    <option value="{{$category->category_id}}">{{$category->category_name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="nameBreed">Tên danh mục</label>
+                                <label for="nameBreed">Tên loại sản phẩm</label>
                                 <input type="text" class="form-control" name="nameBreed" id="nameBreed" placeholder="" 
                                 value="{{$breed->breed_name}}">
                             </div>

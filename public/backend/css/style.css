@@ -228,9 +228,14 @@ ul.sidebar-menu li a.active i {
 .merge-header {
     margin-right:240px;
 }
+
+header.header.fixed-top.clearfix {
+    opacity: 0.7;
+}
 .fixed-top {
     position:fixed;
     box-shadow:1px 0 3px rgba(0,0,0,.15);
+    opacity: 0.7 !important;
 }
 .wrapper {
     display:inline-block;
