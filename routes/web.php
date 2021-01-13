@@ -94,3 +94,6 @@ Route::GET('/delete-product/{product_id}','productController@delete_product');
 Route::GET('/gioithieus','HomeController@gioithieu');
 Route::GET('/cho','HomeController@gioithieucho');
 Route::GET('/meo','HomeController@gioithieumeo');
+
+//lienhe
+Route::GET('/lienhe','HomeController@lienhe');

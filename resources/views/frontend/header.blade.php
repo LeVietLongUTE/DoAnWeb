@@ -62,7 +62,7 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.php" class="active">Trang Chủ</a></li>					
+								<li><a href="/" class="active">Trang Chủ</a></li>					
 								<li><a href="#">Mua Hàng</a>	</li> 						
 								<li><a href="#">Thanh Toán</a>	</li> 
 								
@@ -74,7 +74,7 @@
 									</ul>
 								
 								</li> 
-								<li><a href="#">Liên Hệ</a>	</li> 			
+								<li><a href="{{URL::to('/lienhe')}}">Liên Hệ</a>	</li> 			
 							</ul>
 						</div>
 					</div>
