@@ -92,7 +92,6 @@ Route::POST('/edit-product/{product_id}','productController@edit_product');
 Route::POST('/update-product/{product_id}','productController@update_product');
 Route::GET('/delete-product/{product_id}','productController@delete_product');
 
-<<<<<<< HEAD
 
 //Gio thieu
 Route::GET('/gioithieus','HomeController@gioithieu');
@@ -101,7 +100,7 @@ Route::GET('/meo','HomeController@gioithieumeo');
 
 //lienhe
 Route::GET('/lienhe','HomeController@lienhe');
-=======
+
 //Người dùng
 Route::get('/add-user','loginController@show_formAddUser');
 Route::POST('/add-user','loginController@show_formAddUser');
@@ -116,4 +115,5 @@ Route::POST('/edit-user/{user_id}','loginController@edit_user');
 
 Route::POST('/update-user/{user_id}','loginController@update_user');
 Route::GET('/delete-user/{user_id}','loginController@delete_user');
->>>>>>> origin/vanlong
+
+
