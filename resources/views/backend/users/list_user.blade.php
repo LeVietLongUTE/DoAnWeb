@@ -14,10 +14,10 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th>Tên loại sản phẩm</th>
-            <th>Tên danh mục</th>
-            <th>Mô tả</th>
-            <th>Hiển thị</th>
+            <th>Tên người dùng</th>
+            <th>Email</th>
+            <th>Password(md5)</th>
+            <th>Quyền</th>
             <th style="width:30px;"></th>
           </tr>
         </thead>
@@ -29,31 +29,34 @@
 			          Session::put('message',null);
               }  
           ?>
-          @foreach ($list_breed as $key => $breed)
+          @foreach ($list_user as $key => $user)
           <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
             
-            <td>{{$breed->breed_name}}</td>
-            <td>{{$breed->category_name}}</td>
-            <td>{{$breed->breed_description}}</td>
+            <td>{{$user->name}}</td>
+            <td>{{$user->email}}</td>
+            <td>{{$user->password}}</td>
             <td><span class="text-ellipsis">
                <?php
-                  if ($breed->breed_status==1){
-                    ?>
-                  <a style="text-decoration: none" href="{{URL::to('/unactive-breed/'.$breed->breed_id)}}">Hiện</a>
-                  <?php
+                  if ($user->level==1){
+
+                  echo 'Admin';
+             
                   }else {
-                    ?>
-                   <a style="text-decoration: none" href="{{URL::to('/active-breed/'.$breed->breed_id)}}">Ẩn</a>
-                  <?php
+                      if ($user->level ==0) {
+                          echo 'Khách hàng';
+                      }
+                   else {
+                       echo 'Nhân viên';
+                   }
                   }
                 ?>
             </span></td>
             <td>
-              <a href="{{URL::to('/edit-breed/'.$breed->breed_id)}}" style="font-size: 20px" class="active " ui-toggle-class="">
+              <a href="{{URL::to('/edit-user/'.$user->id)}}" style="font-size: 20px" class="active " ui-toggle-class="">
                 <i class="icon fa fa-pencil text-success text-active"></i>
               </a>
-              <a onclick="return confirm('Bạn có chắc muốn xóa danh mục này hay không?')" href="{{URL::to('/delete-breed/'.$breed->breed_id)}}" style="font-size: 20px" class="active ui-toggle-class="" >
+              <a onclick="return confirm('Bạn có chắc muốn xóa danh mục này hay không?')" href="{{URL::to('/delete-user/'.$user->id)}}" style="font-size: 20px" class="active ui-toggle-class="" >
                 <i class="icon fa fa-times text-danger text"></i></a>
             </td>
           </tr>       
@@ -65,7 +68,7 @@
       <div class="row">
         
         <div class="col-sm-5 text-center">
-          <a class=" btn btn-info"   href="{{URL::to('/add-breed-product')}}" >Thêm loại sản phẩm</a>
+          <a class=" btn btn-info"   href="{{URL::to('/add-user')}}" >Thêm loại sản phẩm</a>
         </div>
         <div class="col-sm-7 text-right text-center-xs">                
           <ul class="pagination pagination-sm m-t-none m-b-none">

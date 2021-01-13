@@ -48,7 +48,10 @@
                                 <option value="0">Ẩn</option>
                             </select>
                         </div>
-                        <button type="submit" name="add_breed_product" class="btn btn-info">Thêm loại sản phẩm</button>
+                        <div class="form-group" style="display: flex; justify-content: space-around">
+                            <button type="submit" name="add_breed_product" class="btn btn-info">Thêm loại sản phẩm</button>
+                            <a class="btn btn-info"   href="{{URL::to('/list-breed')}}" >Danh sách loại sản phẩm</a>
+                        </div>
                     </form>
                     </div>
 
