@@ -72,7 +72,7 @@
                     <p>Dogily đang cung cấp cho các gia đình những thú cưng mà họ chưa từng gặp mặt. Đó là một trách nhiệm to lớn đòi hỏi chúng tôi phải thực hiện rất nghiêm túc. Chính vì vậy, trong nhiều năm qua chúng tôi đã sàng lọc, lựa chọn và phát triển mối quan hệ hợp tác với các nhà nhân giống chuyên nghiệp, trung thực ở cả trong và ngoài nước (Nga, Ucraina, Ba Lan, Pháp…). Từ đó có thể chọn lọc và đem đến những thú cưng có phẩm chất tốt nhất đến cho khách hàng.</p>
                     </br>
                     <p>Chúng tôi chịu trách nhiệm tiêm vắc xin đầy đủ cũng như chuẩn bị các tài liệu cần thiết và sắp xếp việc vận chuyển, kiểm tra y tế và làm thủ tục hành chính với các cơ quan, chính quyền (nếu cần) để đưa cún cưng nhanh nhất về với gia đình mới.</p>
-                    </br> </br>
+                    </br>
                 </div>
 			</div>
 		</div>
