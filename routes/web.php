@@ -22,13 +22,16 @@ Route::get('/trang-chu','HomeController@index');
 
 Route::get('/login','loginController@show_login');
 Route::get('/register','loginController@show_register');
+
 Route::get('/admin-layout','adminLayoutController@index');
 
-Route::get('/dashboard','adminLayoutController@show_dashboard');
+Route::get('/dashboard','loginController@show_dashboard');
+// Route::GET('/dashboard','loginController@loginadmin');
 
 Route::POST('/dashboard','loginController@loginadmin');
 
 Route::POST('/registeryet','loginController@register');
+
 Route::get('/logout','loginController@logout');
 
 
@@ -88,3 +91,18 @@ Route::POST('/edit-product/{product_id}','productController@edit_product');
 
 Route::POST('/update-product/{product_id}','productController@update_product');
 Route::GET('/delete-product/{product_id}','productController@delete_product');
+
+//Người dùng
+Route::get('/add-user','loginController@show_formAddUser');
+Route::POST('/add-user','loginController@show_formAddUser');
+Route::POST('/save-user','loginController@save_User');
+
+//list user
+Route::get('/list-user','loginController@show_listUser');
+Route::POST('/list-user','loginController@show_listUser');
+//edit user
+Route::get('/edit-user/{user_id}','loginController@edit_user');
+Route::POST('/edit-user/{user_id}','loginController@edit_user');
+
+Route::POST('/update-user/{user_id}','loginController@update_user');
+Route::GET('/delete-user/{user_id}','loginController@delete_user');

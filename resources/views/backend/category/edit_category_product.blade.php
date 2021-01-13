@@ -36,7 +36,11 @@
                                 <textarea style="resize: none" cols="5" class="form-control" name="description" id="description" placeholder=""
                                 >{{$category->category_descript}}</textarea>
                             </div>
-                            <button type="submit" name="edit_category" class="btn btn-info">Chỉnh sửa danh mục</button>
+                            <div class="form-group" style="display: flex; justify-content: space-around">
+                                <button type="submit" name="edit_category" class="btn btn-info">Chỉnh sửa danh mục</button>
+                                <a class="button_a btn btn-info"   href="{{URL::to('/list-category')}}" >Danh sách danh mục sản phẩm</a>
+                                <a class="button_a btn btn-info"   href="{{URL::to('/add-category-product')}}" >Thêm danh mục sản phẩm</a>
+                            </div>
                         @endforeach
                     </form>
                     </div>

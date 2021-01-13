@@ -23,6 +23,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 <div class="reg-w3">
 <div class="w3layouts-main">
+	<?php 
+		$message = Session::get('message');
+		if($message){
+	  	echo '<script>alert("'.$message.'");</script>';
+				Session::put('message',null);
+		}  
+	?>
 	<h2>Đăng ký</h2>
 		<form action="{{URL::to('/registeryet')}}" method="POST">
 			{{ csrf_field() }}

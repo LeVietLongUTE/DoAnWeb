@@ -22,97 +22,100 @@
 
 <body>
 	<header id="header"><!--header-->
-		<div class="header_top"><!--header_top-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="contactinfo">
-							<ul class="nav nav-pills">
-								<li><a href="#"><i class="fa fa-calendar-alt"></i>  T2 - CN</a></li>
-								<li><a href="#"><i class="fa fa-clock"></i> 8:00 - 21:00</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="social-icons pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fab fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-								<li><a href="#"><i class="fab fa-dribbble"></i></a></li>
-								<li><a href="#"><i class="fab fa-google-plus"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header_top-->
 		
-		<div class="header-middle"><!--header-middle-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="logo pull-left">
-							<a href="#" ><img style="width: 120px" src="{{('public/frontend/images/logo_pet.png')}}" alt="" /></a>
-						</div>
-						
-					</div>
-					<div class="col-sm-6">
-						<div class="shop-menu pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-user"></i> Tài khoản</a></li>
-								<li><a href="#"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
-								<li><a href="#"><i class="fa fa-lock"></i> Đăng nhập</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header-middle-->
+<div class="header_top"><!--header_top-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="contactinfo">
+                    <ul class="nav nav-pills">
+                        <li><a href="#"><i class="fa fa-calendar-alt"></i>  T2 - CN</a></li>
+                        <li><a href="#"><i class="fa fa-clock"></i> 8:00 - 21:00</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="social-icons pull-right">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--/header_top-->
 
-		<div class="header-bottom" style="font-weight: 800;"><!--header-bottom-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						</div>
-						<div class="mainmenu pull-left">
-							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.php" class="active">Trang Chủ</a></li>
-								<li class="dropdown"><a href="#">Giới thiệu<i class="fa fa-angle-down"></i></a>
-									<ul role="menu" class="sub-menu">
-										<li><a href="#">Liên hệ</a></li>
-										<li><a href="#">Product Details</a></li> 
-										<li><a href="#">Checkout</a></li> 
-										<li><a href="#">Cart</a></li> 
-										<li><a href="#">Login</a></li> 
-									</ul>
-								</li> 
-								<li class="dropdown"><a href="#">Tin tức</a>
-									
-								</li> 
-								<li><a href="C:/xampp/htdocs/ShopThuCung/404.html">404</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header-bottom-->
+<div class="header-middle"><!--header-middle-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="logo pull-left">
+                    <a href="{{URL::to('/trang-chu')}}" ><img style="width: 120px" src="{{('public/frontend/images/logo_pet.png')}}" alt="" /></a>
+                </div>
+                
+            </div>
+            <div class="col-sm-6">
+                <div class="shop-menu pull-right">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#"><i class="fa fa-user"></i> Tài khoản</a></li>
+                        <li><a href="#"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                        <li><a href="{{URL::to('/login')}}"><i class="fa fa-lock"></i> Đăng nhập</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--/header-middle-->
+
+<div class="header-bottom" style="font-weight: 800;"><!--header-bottom-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="mainmenu pull-left">
+                    <ul class="nav navbar-nav collapse navbar-collapse">
+                        <li><a href="{{URL::to('/trang-chu')}}" class="active">Trang Chủ</a></li>
+                        <li class="dropdown"><a href="#">Giới thiệu<i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                <li><a href="#">Liên hệ</a></li>
+                                <li><a href="#">Product Details</a></li> 
+                                <li><a href="#">Checkout</a></li> 
+                                <li><a href="#">Cart</a></li> 
+                                <li><a href="#">Login</a></li> 
+                            </ul>
+                        </li> 
+                        <li class="dropdown"><a href="#">Tin tức</a>
+                            
+                        </li> 
+                        <li><a href="C:/xampp/htdocs/ShopThuCung/404.html">404</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="search_box pull-right">
+                    <input type="text" placeholder="Search"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--/header-bottom-->
 	</header><!--/header-->
+
 	
 	<section id="slider"><!--slider-->
+	
 		<center>
 		<div class="slide_view">
 					<div id="myslide" class="carousel slide" data-ride="carousel">
@@ -132,9 +135,6 @@
 									<img src="{{('public/frontend/images/slideshow_2.jpg')}}"  alt="" />
 								
 							</div>
-							
-						
-							
 						</div>
 						
 						<a class="left carousel-control" href="#myslide" data-slide="prev">

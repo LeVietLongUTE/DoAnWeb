@@ -50,21 +50,72 @@ use Illuminate\Support\Facades\DB;
                                 value="{{$product->product_price}}">
                             </div>
                             <div class="form-group">
-                                <label for="imageProduct">Hình ảnh </label>
+                                <label for="imageProductMain">Hình ảnh chính</label>
                                 <input type="file" class="form-control" name="imageProduct" id="imageProduct" placeholder=""
-                                value="{{$product->product_image}}">
-                                <p>{{$product->product_image}}</p>
-                                <div>
-                                    <img src="public/uploads/products/{{$product->product_image}}" height="100" width="100">
-                                </div>
+                                value="{{$product->product_image_main}}">
+                                <p>{{$product->product_image_main}}</p>
+                                {{-- <div>
+                                    <img src="public/uploads/products/{{$product->product_image_main}}" height="100" width="100">
+                                </div> --}}
 
+                            </div>
+                            <div class="form-group">
+                                <label for="imageProduct1">Hình ảnh phụ 1 </label>
+                                <input type="file" class="form-control" name="imageProduct" id="imageProduct" placeholder=""
+                                value="{{$product->product_image1}}">
+                                <p>{{$product->product_image1}}</p>
+                                {{-- <div>
+                                    <img src="public/uploads/products/{{$product->product_image_main}}" height="100" width="100">
+                                </div> --}}
+
+                            </div>
+                            <div class="form-group">
+                                <label for="imageProduct2">Hình ảnh phụ 2</label>
+                                <input type="file" class="form-control" name="imageProduct" id="imageProduct" placeholder=""
+                                value="{{$product->product_image2}}">
+                                <p>{{$product->product_image2}}</p>
+                                {{-- <div>
+                                    <img src="public/uploads/products/{{$product->product_image_main}}" height="100" width="100">
+                                </div> --}}
+
+                            </div>
+                            <div class="form-group">
+                                <label for="imageProduct3">Hình ảnh phụ 3</label>
+                                <input type="file" class="form-control" name="imageProduct" id="imageProduct" placeholder=""
+                                value="{{$product->product_image3}}">
+                                <p>{{$product->product_image3}}</p>
+                                {{-- <div>
+                                    <img src="public/uploads/products/{{$product->product_image_main}}" height="100" width="100">
+                                </div> --}}
+
+                            </div>
+                            <div class="form-group">
+                                <label>Giới tính</label>
+                                <select name="product_gender" class="form-control input-sm m-bot15">
+                                    <option value="1">Đực</option>
+                                    <option value="0">Cái</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tiemProduct">Tiêm vacxin </label>
+                                <input type="number" class="form-control" name="tiemProduct" id="tiemProduct" placeholder="" 
+                                value="{{$product->product_tiem}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="xuatxuProduct">Xuất xứ</label>
+                                <input type="text" class="form-control" name="xuatxuProduct" id="xuatxuProduct" placeholder=""
+                                value="{{$product->product_xuatxu}}">
                             </div>
                             <div class="form-group">
                                 <label for="description">Mô tả</label>
                                 <textarea style="resize: none" cols="5" rows="5" class="form-control" name="description" id="description" placeholder=""
                                 >{{$product->product_description}}</textarea>
                             </div>
-                            <button type="submit" name="edit_product" class="btn btn-info">Chỉnh sửa sản phẩm</button>
+                            <div class="form-group" style="display: flex; justify-content: space-around">
+                                <button type="submit" name="edit_product" class="btn btn-info">Chỉnh sửa sản phẩm</button>
+                                <a class="button_a btn btn-info"   href="{{URL::to('/list-product')}}" >Danh sách sản phẩm</a>
+                                <a class="button_a btn btn-info"   href="{{URL::to('/add-product')}}" >Thêm sản phẩm</a>
+                            </div>
                         @endforeach
                     </form>
                     </div>

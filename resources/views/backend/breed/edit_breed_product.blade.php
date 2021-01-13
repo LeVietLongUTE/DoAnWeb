@@ -44,7 +44,11 @@ use Illuminate\Support\Facades\DB;
                                 <textarea style="resize: none" cols="5" class="form-control" name="description" id="description" placeholder=""
                                 >{{$breed->breed_description}}</textarea>
                             </div>
-                            <button type="submit" name="edit_breed" class="btn btn-info">Chỉnh sửa danh mục</button>
+                            <div class="form-group" style="display: flex; justify-content: space-around">
+                                <button type="submit" name="edit_breed" class="btn btn-info">Chỉnh sửa danh mục</button>
+                                <a class="button_a btn btn-info"   href="{{URL::to('/list-breed')}}" >Danh sách loại sản phẩm</a>
+                                <a class="button_a btn btn-info"   href="{{URL::to('/add-breed-product')}}" >Thêm loại sản phẩm</a>
+                            </div>
                         @endforeach
                     </form>
                     </div>

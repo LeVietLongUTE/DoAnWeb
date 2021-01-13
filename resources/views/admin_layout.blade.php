@@ -54,6 +54,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <span class="username">
                 <?php 
                     $name = Session::get('name');
+                    $id = Session::get('id');
                     if($name){
                         // echo '<script>alert('.$message.');</script>';
                         echo $name;
@@ -94,8 +95,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span>Quản lý người dùng</span>
                     </a>
                     <ul class="sub">
-						<li><a href="{{URL::to('/add-category-product')}}">Thêm người dùng</a></li>
-						<li><a href="{{URL::to('/list-category')}}">List người dùng</a></li>
+						<li><a href="{{URL::to('/add-user')}}">Thêm người dùng</a></li>
+						<li><a href="{{URL::to('/list-user')}}">List người dùng</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">

@@ -40,7 +40,10 @@
                                 <option value="0">Ẩn</option>
                             </select>
                         </div>
-                        <button type="submit" name="add_category_product" class="btn btn-info">Thêm danh mục</button>
+                        <div class="form-group" style="display: flex; justify-content: space-around">
+                            <button type="submit" name="add_category_product" class="btn btn-info">Thêm danh mục</button>
+                            <a class="btn btn-info"   href="{{URL::to('/list-category')}}" >Danh sách danh mục sản phẩm</a>
+                        </div>
                     </form>
                     </div>
 

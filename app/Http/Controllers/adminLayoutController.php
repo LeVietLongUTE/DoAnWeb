@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
+session_start();
 
 class adminLayoutController extends Controller
 {
@@ -16,10 +17,16 @@ class adminLayoutController extends Controller
         # code...
         return view('admin_layout');
     }
-    //move den trang tong quan cua admin
-    public function show_dashboard() {
-        return view('backend.dashboard');
+    public function AuthLogin() {
+        $admin_id = Session::get('id');
+        if ($admin_id) {
+            return Redirect::to('backend.dashboard');
+        }else {
+            Redirect::to('login');
+        }
     }
+
+    
     //Category controller
     public function show_formAddCategory() {
         return view('backend.category.add_category_product');
