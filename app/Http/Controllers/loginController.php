@@ -126,7 +126,7 @@ class loginController extends Controller
             'password' => md5($request->password),
             'level' => $request->level
         ];
-        if( empty($request->name) or empty($request->email) or empty($request->password) or empty($request->level)){
+        if( empty($request->name) or empty($request->email) or empty($request->password)){
             Session::put('error','Bạn đã nhập rỗng dữ liệu không được phép');
             return Redirect::to('/add-user');
         }else{
@@ -164,14 +164,18 @@ class loginController extends Controller
             'password' =>md5($request->password),
             'level' => $request->level
         ];
-
-        if (DB::table('users')->where('email',$request->email)->first()){
-            Session::put('error','Email người dùng đã tồn tại!');
+        if (empty($request->name) or empty(md5($request->password))){
+            Session::put('error','Bạn đã nhập rỗng dữ liệu không được phép');
             return Redirect::to('/edit-user/'.$user_id);
-        }else{
-            DB::table('users')->where('id',$user_id)->update($data);
-            Session::put('message','Cập nhật tài khoản thành công');
-            return Redirect::to('list-user');
+        }else {
+            if (DB::table('users')->where('email',$request->email)->first()){
+                Session::put('error','Email người dùng đã tồn tại!');
+                return Redirect::to('/edit-user/'.$user_id);
+            }else{
+                DB::table('users')->where('id',$user_id)->update($data);
+                Session::put('message','Cập nhật tài khoản thành công');
+                return Redirect::to('list-user');
+            }
         }
         if (empty($request->name) or empty(md5($request->password))){
             Session::put('error','Bạn đã nhập rỗng dữ liệu không được phép');

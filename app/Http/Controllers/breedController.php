@@ -21,13 +21,16 @@ class breedController extends Controller
 
         $data = array();
         //$data__ = DB::table('tb_category_product')->where('category_name',$request->category_name)->get();
+        if(!$request->description){
+            $request->description='';
+        }
         $data = [
             'category_id' =>$request->category_id, 
             'breed_name' => $request->nameBreed,
             'breed_description' => $request->description,
             'breed_status' => $request->breed_status
         ];
-        if( empty($request->nameBreed) or empty($request->description)){
+        if( empty($request->nameBreed) ){
             Session::put('error','Bạn đã nhập rỗng dữ liệu không được phép');
             return Redirect::to('/add-breed-product');
         }else{
@@ -76,24 +79,37 @@ class breedController extends Controller
 
     }
     public function update_breedProduct ( Request $request, $breed_product_id) {
-        $data__ = DB::table('tb_category_product')->where('category_name',$request->category_name)->get('category_id')->first();
+        $data__ = DB::table('tb_breed_product')->where('breed_id',$breed_product_id)->get('breed_name');
         
         $data = [
             'category_id' => $request->category_name,
             'breed_name' => $request->nameBreed,
             'breed_description' =>$request->description
         ];
+
+        foreach ($data__ as $key => $data__) {
+            # code...
+       
+
         if (empty($request->nameBreed)){
             Session::put('error','Bạn đã nhập rỗng dữ liệu không được phép');
             return Redirect::to('/edit-breed/'.$breed_product_id);
         }else {
+
             if (DB::table('tb_breed_product')->where('breed_name',$request->nameBreed)->first()){
+
+            if (DB::table('tb_breed_product')->where('breed_name',$request->nameBreed)->first() && ($request->nameBreed != $data__->breed_name)){
+
                 Session::put('error','Tên loại sản phẩm đã tồn tại!');
                 return Redirect::to('/edit-breed/'.$breed_product_id);
             }else{
                 DB::table('tb_breed_product')->where('breed_id',$breed_product_id)->update($data);
                 Session::put('message','Cập nhật loại sản phẩm thành công');
                 return Redirect::to('list-breed');
+
+
+            }
+
         }
     }
     }

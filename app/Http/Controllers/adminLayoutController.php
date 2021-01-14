@@ -33,12 +33,15 @@ class adminLayoutController extends Controller
     }
     public function save_categoryProduct(Request $request) {
         $data = array();
+        if (!$request->description) {
+            $request->description = '';
+        }
         $data = [
             'category_name' => $request->nameCategory,
             'category_descript' => $request->description,
             'category_status' => $request->category_status
         ];
-        if( empty($request->nameCategory) or empty($request->description)){
+        if( empty($request->nameCategory)){
             Session::put('error','Bạn đã nhập rỗng dữ liệu không được phép');
             return Redirect::to('/add-category-product');
         }else{
@@ -82,10 +85,12 @@ class adminLayoutController extends Controller
 
     }
     public function update_categoryProduct ( Request $request, $category_product_id) {
+        $data__ = DB::table('tb_category_product')->where('category_id',$category_product_id)->get('category_name');
         $data = [
             'category_name' => $request->nameCategory,
             'category_descript' =>$request->description
         ];
+
         if (empty($request->nameCategory)){
             Session::put('error','Bạn đã nhập rỗng dữ liệu không được phép!');
             return Redirect::to('/edit-category/'.$category_product_id);
@@ -97,6 +102,23 @@ class adminLayoutController extends Controller
                 DB::table('tb_category_product')->where('category_id',$category_product_id)->update($data);
                 Session::put('message','Cập nhật danh mục sản phẩm thành công');
                 return Redirect::to('list-category');
+
+        foreach ($data__ as $key => $data__) {
+            # code...
+        
+            if (empty($request->nameCategory)){
+                Session::put('error','Bạn đã nhập rỗng dữ liệu không được phép!');
+                return Redirect::to('/edit-category/'.$category_product_id);
+            }else{
+                if (DB::table('tb_category_product')->where('category_name',$request->nameCategory)->first() && ($request->nameCategory != $data__->category_name)){
+                    Session::put('error','Tên danh mục đã tồn tại!');
+                    return Redirect::to('/edit-category/'.$category_product_id);
+                }else{
+                    DB::table('tb_category_product')->where('category_id',$category_product_id)->update($data);
+                    Session::put('message','Cập nhật danh mục sản phẩm thành công');
+                    return Redirect::to('list-category');
+                }
+
             }
         }
     }

@@ -74,7 +74,7 @@
               <a href="{{URL::to('/edit-product/'.$product->product_id)}}" style="font-size: 20px" class="active " ui-toggle-class="">
                 <i class="icon fa fa-pencil text-success text-active"></i>
               </a>
-              <a onclick="return confirm('Bạn có chắc muốn xóa danh mục này hay không?')" href="{{URL::to('/delete-product/'.$product->product_id)}}" style="font-size: 20px" class="active ui-toggle-class="" >
+              <a onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này hay không?')" href="{{URL::to('/delete-product/'.$product->product_id)}}" style="font-size: 20px" class="active ui-toggle-class="" >
                 <i class="icon fa fa-times text-danger text"></i></a>
             </td>
           </tr>       

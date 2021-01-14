@@ -9,19 +9,9 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-
-            <th style="width:20px;">
-              <label class="i-checks m-b-none">
-                <input type="checkbox"><i></i>
-              </label>
-            </th>
-
-            
-
-            <th>Tên người dùng</th>
-            <th>Email</th>
-            <th>Password(md5)</th>
-            <th>Quyền</th>
+            <th>Mã banner</th>
+            <th>Ảnh banner</th>
+            <th>Hiển thị</th>
             <th style="width:30px;"></th>
           </tr>
         </thead>
@@ -33,38 +23,30 @@
 			          Session::put('message',null);
               }  
           ?>
-          @foreach ($list_user as $key => $user)
+          @foreach ($list_banner as $key => $banner)
           <tr>
-
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-
-           
-
             
-            <td>{{$user->name}}</td>
-            <td>{{$user->email}}</td>
-            <td>{{$user->password}}</td>
+            
+            <td>{{$banner->banner_id}}</td>
+            <td><img width="200px" height="100px" src="public/uploads/products/{{$banner->banner_image}}" alt="banner"></td>
             <td><span class="text-ellipsis">
                <?php
-                  if ($user->level==1){
-
-                  echo 'Admin';
-             
+                  if ($banner->banner_status==1){
+                    ?>
+                  <a style="text-decoration: none" href="{{URL::to('/unactive-banner/'.$banner->banner_id)}}">Hiện</a>
+                  <?php
                   }else {
-                      if ($user->level ==0) {
-                          echo 'Khách hàng';
-                      }
-                   else {
-                       echo 'Nhân viên';
-                   }
+                    ?>
+                   <a style="text-decoration: none" href="{{URL::to('/active-banner/'.$banner->banner_id)}}">Ẩn</a>
+                  <?php
                   }
                 ?>
             </span></td>
             <td>
-              <a href="{{URL::to('/edit-user/'.$user->id)}}" style="font-size: 20px" class="active " ui-toggle-class="">
+              <a href="{{URL::to('/edit-banner/'.$banner->banner_id)}}" style="font-size: 20px" class="active " ui-toggle-class="">
                 <i class="icon fa fa-pencil text-success text-active"></i>
               </a>
-              <a onclick="return confirm('Bạn có chắc muốn xóa tài khoản này hay không?')" href="{{URL::to('/delete-user/'.$user->id)}}" style="font-size: 20px" class="active ui-toggle-class="" >
+              <a onclick="return confirm('Bạn có chắc muốn xóa banner này hay không?')" href="{{URL::to('/delete-banner/'.$banner->banner_id)}}" style="font-size: 20px" class="active ui-toggle-class="" >
                 <i class="icon fa fa-times text-danger text"></i></a>
             </td>
           </tr>       
@@ -76,7 +58,7 @@
       <div class="row">
         
         <div class="col-sm-5 text-center">
-          <a class=" btn btn-info"   href="{{URL::to('/add-user')}}" >Thêm loại sản phẩm</a>
+          <a class=" btn btn-info"   href="{{URL::to('/add-banner')}}" >Thêm banner</a>
         </div>
         <div class="col-sm-7 text-right text-center-xs">                
           <ul class="pagination pagination-sm m-t-none m-b-none">
