@@ -226,11 +226,21 @@ class productController extends Controller
        $manager_product = view('backend.product.view_product')->with('list_product',$list_product);
         return view('admin_layout')->with('backend.product.view_product',$manager_product);
     }
+
+
+//end admin
+
     public function details_product($product_id) {
         $list_category = DB::table('tb_category_product')->where('category_status',1)->get();
         $list_breed = DB::table('tb_breed_product')->where('breed_status',1)->get();
         $list_product = DB::table('tb_product')->where('product_status',1)->limit(4)->get();
         return view('frontend.show_details')->with('category',$list_category)->with('breed',$list_breed)->with('product',$list_product);
 
+
     }
 }
+
+
+
+
+
