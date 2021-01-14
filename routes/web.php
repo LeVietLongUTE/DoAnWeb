@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 /* ---- Front End ---- */
 Route::get('/','HomeController@index');
-
 Route::get('/trang-chu','HomeController@index');
 
 /* ---- Back End ---- */

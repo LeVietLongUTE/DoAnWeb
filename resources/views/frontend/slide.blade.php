@@ -1,25 +1,44 @@
+{{-- @extends('welcome')
+@section('slide')
+     --}}
 
 <section id="slider"><!--slider-->
-	
+
     <center>
     <div class="slide_view">
+       
+            
+
                 <div id="myslide" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                        <li data-target="#myslide" data-slide-to="0" class="active"></li>
-                        <li data-target="#myslide" data-slide-to="1"></li>
-                
+                        <?php $i=0; ?>
+                        @foreach ($list_slide as $keysl => $slide )
+                        <li data-target="#myslide" data-slide-to="{{$i}}"
+                            @if ($i==0) {
+                                class="active"
+                            }
+                            @endif
+
+                        ></li>
+                        <?php $i++ ?>
+                        @endforeach
                     </ol>
                     
                     <div class="carousel-inner">
-                        <div class="item active">
-                            <img src="{{('public/frontend/images/slideshow_1.jpg')}}"  alt="" />
+                        <?php $i=0; ?>
+                        @foreach ($list_slide as $keysl => $slide )
+                        <div 
+                            @if ($i==0)
+                                class="item active"
+                            @else
+                                class="item"
+                            @endif
+                        >
+                        <?php $i++ ?> 
+                            <img class="slide-image" src="public/uploads/products/{{$slide->banner_image}}"  alt="" />
                         </div>
-                        <div class="item">
-                            
                         
-                                <img src="{{('public/frontend/images/slideshow_2.jpg')}}"  alt="" />
-                            
-                        </div>
+                        @endforeach
                     </div>
                     
                     <a class="left carousel-control" href="#myslide" data-slide="prev">
@@ -31,6 +50,8 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
+
     </div>
 </center>
 </section><!--/slider-->
+{{-- @endsection --}}

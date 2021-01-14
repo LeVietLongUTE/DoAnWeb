@@ -24,6 +24,7 @@
 	
 @include('frontend.header')
 @include('frontend.slide')	
+{{-- @yield('slide') --}}
 
 	
 	<section>
@@ -35,23 +36,26 @@
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 							<div class="panel panel-default">
 								@foreach($category as $key => $cate)   
-								<?php for ($i=0; $i < $key; $i++) { 
 
-								?> 
-								<?php } ?>
 									<div class="panel-heading">
-										<h4 class="panel-title"><a href="{{URL::to('/danhmucsanpham/'.$cate->category_id)}}" >
-										<?php
+										<h4 class="panel-title"><a style="color: orange"  href="{{URL::to('/danhmucsanpham/'.$cate->category_id)}}" >
+											<?php
 											echo $cate->category_name;
 										?>
 							
 											@foreach($breed as $key => $dmc)   
+												@if($cate->category_id == $dmc->category_id)
 												<div class="panel-body">
-													<ul>
-														<li><a href="#">{{$dmc->breed_name}}</a></li>
+									
+														<a href="#">
+															
+															{{$dmc->breed_name}}
+														
+														</a>
 														
 													</ul>
 												</div>
+												@endif
 											@endforeach
 										
 									 </a></h4>
@@ -60,8 +64,7 @@
 								
 								
 							</div>
-							
-							
+
 						</div><!--/category-products-->
 					
 						{{-- <div class="brands_products"><!--brands_products-->
