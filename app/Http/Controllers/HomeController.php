@@ -30,5 +30,11 @@ class HomeController extends Controller
     public function lienhe() {
         return view('frontend.lienhe');
     }
+    public function details_product($product_id) {
+        $list_category = DB::table('tb_category_product')->where('category_status',1)->get();
+        $list_breed = DB::table('tb_breed_product')->where('breed_status',1)->get();
+
+        return view('frontend.show_details')->with('breed',$list_breed)->with('product',$list_product);
+    }
 }
 ?>

@@ -213,12 +213,10 @@ class productController extends Controller
     }
     }
 
-   public function delete_product($product_id) {
+    public function delete_product($product_id) {
         DB::table('tb_product')->where('product_id',$product_id)->delete();
         Session::put('message','Xóa sản phẩm thành công');
         return Redirect::to('list-product');
-
-
     }
     public function view_product($product_id) {
         $list_product = DB::table('tb_product')
@@ -227,27 +225,12 @@ class productController extends Controller
        ->select('tb_product.*','category_name','breed_name')->where('product_id',$product_id)->get();
        $manager_product = view('backend.product.view_product')->with('list_product',$list_product);
         return view('admin_layout')->with('backend.product.view_product',$manager_product);
-
     }
-
-    //end admin
     public function details_product($product_id) {
         $list_category = DB::table('tb_category_product')->where('category_status',1)->get();
         $list_breed = DB::table('tb_breed_product')->where('breed_status',1)->get();
+        $list_product = DB::table('tb_product')->where('product_status',1)->limit(4)->get();
+        return view('frontend.show_details')->with('category',$list_category)->with('breed',$list_breed)->with('product',$list_product);
 
-        return view('frontend.show_details')->with('breed',$list_breed)->with('product',$list_product);
-    }
-    public function view_product($product_id) {
-        $list_product = DB::table('tb_product')
-       ->join('tb_breed_product','tb_product.breed_id','=','tb_breed_product.breed_id')
-       ->join('tb_category_product','tb_breed_product.category_id','=','tb_category_product.category_id')
-       ->select('tb_product.*','category_name','breed_name')->where('product_id',$product_id)->get();
-       $manager_product = view('backend.product.view_product')->with('list_product',$list_product);
-        return view('admin_layout')->with('backend.product.view_product',$manager_product);
     }
 }
-
-
-
-
-
