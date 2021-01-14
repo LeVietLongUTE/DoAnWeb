@@ -30,11 +30,7 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-            <th style="width:20px;">
-              <label class="i-checks m-b-none">
-                <input type="checkbox"><i></i>
-              </label>
-            </th>
+            
             <th>Tên danh mục</th>
             <th>Mô tả</th>
             <th>Hiển thị</th>
@@ -52,7 +48,7 @@
           ?>
           @foreach ($list_category as $key => $category)
           <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+           
             <td>{{$category->category_name}}</td>
             <td>{{$category->category_descript}}</td>
             <td><span class="text-ellipsis">

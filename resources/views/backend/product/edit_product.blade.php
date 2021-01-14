@@ -54,9 +54,15 @@ use Illuminate\Support\Facades\DB;
                                 <input type="file" class="form-control" name="imageProduct" id="imageProduct" placeholder=""
                                 value="{{$product->product_image_main}}">
                                 <p>{{$product->product_image_main}}</p>
+<<<<<<< Updated upstream
                                 {{-- <div>
                                     <img src="public/uploads/products/{{$product->product_image_main}}" height="100" width="100">
                                 </div> --}}
+=======
+                                <div>
+                                    <img src="../public/uploads/products/{{$product->product_image_main}}" height="100" width="100">
+                                </div>
+>>>>>>> Stashed changes
 
                             </div>
                             <div class="form-group">

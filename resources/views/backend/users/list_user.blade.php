@@ -9,11 +9,15 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
+<<<<<<< Updated upstream
             <th style="width:20px;">
               <label class="i-checks m-b-none">
                 <input type="checkbox"><i></i>
               </label>
             </th>
+=======
+            
+>>>>>>> Stashed changes
             <th>Tên người dùng</th>
             <th>Email</th>
             <th>Password(md5)</th>
@@ -31,7 +35,11 @@
           ?>
           @foreach ($list_user as $key => $user)
           <tr>
+<<<<<<< Updated upstream
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+=======
+           
+>>>>>>> Stashed changes
             
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>

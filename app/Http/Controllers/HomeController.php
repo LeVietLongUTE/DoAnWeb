@@ -11,17 +11,5 @@ class HomeController extends Controller
         return view('frontend.home');
         
     }
-    public function gioithieucho() {
-        return view('frontend.gioithieu.cho');
-    }
-    public function gioithieumeo() {
-        return view('frontend.gioithieu.meo');
-    }
-    public function gioithieu() {
-        return view('frontend.gioithieu.gioithieus');
-    }
-    public function lienhe() {
-        return view('frontend.lienhe');
-    }
 }
 ?>

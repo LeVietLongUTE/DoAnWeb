@@ -138,6 +138,11 @@ class productController extends Controller
                 $new_img1 = $request->nameProduct.'_phụ1_'.rand(0,99).'.'.$get_img1->getClientOriginalExtension();
                 $get_img1->move('public/uploads/products',$new_img1);
                 $data['product_image1'] = $new_img1;
+<<<<<<< Updated upstream
+            }else{
+                $data['product_image1'] = '';
+            }
+=======
             }else{
                 $data['product_image1'] = '';
             }
@@ -166,6 +171,47 @@ class productController extends Controller
                     return Redirect::to('/edit-product/'.$product_id);
                 }else{
                     DB::table('tb_product')->where('product_id',$product_id)->update($data);
+                    Session::put('message','Chỉnh sửa sản phẩm thành công');
+                    return Redirect::to('/list-product');
+                }
+            }
+        }else{
+            if ($get_img1) {
+                $new_img1 = $request->nameProduct.'_phụ1_'.rand(0,99).'.'.$get_img1->getClientOriginalExtension();
+                $get_img1->move('public/uploads/products',$new_img1);
+                $data['product_image1'] = $new_img1;
+            }else{
+                $data['product_image1'] = '';
+            }
+>>>>>>> Stashed changes
+            if ($get_img2) {
+                $new_img2 = $request->nameProduct.'_phụ2_'.rand(0,99).'.'.$get_img2->getClientOriginalExtension();
+                $get_img2->move('public/uploads/products',$new_img2);
+                $data['product_image2'] = $new_img2;
+            }else{
+                $data['product_image2'] = '';
+            }
+            if ($get_img3) {
+                $new_img3 = $request->nameProduct.'_phụ3_'.rand(0,99).'.'.$get_img3->getClientOriginalExtension();
+                $get_img3->move('public/uploads/products',$new_img3);
+                $data['product_image3'] = $new_img3;
+            }else{
+                $data['product_image3'] = '';
+            }
+<<<<<<< Updated upstream
+            $get_img->move('public/uploads/products',$new_img);
+            $data['product_image_main'] = $new_img;
+=======
+>>>>>>> Stashed changes
+            if( empty($request->nameProduct) or empty($request->ageProduct) or empty($request->priceProduct) or empty($request->tiemProduct) or empty($request->xuatxuProduct) ){
+                Session::put('message','Bạn đã nhập rỗng dữ liệu không được phép');
+                return Redirect::to('/edit-product/'.$product_id);
+            }else{
+                if (DB::table('tb_product')->where('product_name',$request->nameProduct)->first()){
+                    Session::put('error','Tên sản phẩm đã tồn tại!');
+                    return Redirect::to('/edit-product/'.$product_id);
+                }else{
+                    DB::table('tb_product')->where('product_id',$product_id)->update($data);
                     Session::put('message','Thêm sản phẩm thành công');
                     return Redirect::to('/list-product');
                 }
@@ -177,5 +223,16 @@ class productController extends Controller
         DB::table('tb_product')->where('product_id',$product_id)->delete();
         Session::put('message','Xóa sản phẩm thành công');
         return Redirect::to('list-product');
+<<<<<<< Updated upstream
+=======
+    }
+    public function view_product($product_id) {
+        $list_product = DB::table('tb_product')
+       ->join('tb_breed_product','tb_product.breed_id','=','tb_breed_product.breed_id')
+       ->join('tb_category_product','tb_breed_product.category_id','=','tb_category_product.category_id')
+       ->select('tb_product.*','category_name','breed_name')->where('product_id',$product_id)->get();
+       $manager_product = view('backend.product.view_product')->with('list_product',$list_product);
+        return view('admin_layout')->with('backend.product.view_product',$manager_product);
+>>>>>>> Stashed changes
     }
 }
