@@ -3,28 +3,29 @@
 <div class="features_items"><!--features_items-->
     <h2 class="title text-center">Sản phẩm Mới</h2>
     @foreach($product as $key => $prod)
-    <a href="{{URL::to('/Chi tiet san pham/'.$prod->product_id)}}">
-    <div class="col-sm-3">
-        <div class="product-image-wrapper">
-            <div class="single-products">
-                    <div class="productinfo text-center">
-                        <img src="{{URL::to('public/uploads/products/'.$prod->product_image_main)}}" alt="" />
-                        <h4>{{number_format($prod->product_price).' '.'VNĐ'}}</h4>
-                        <p>{{$prod->product_name}}</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Buy</a>
+        <a href="{{URL::to('/Chi tiet san pham/'.$prod->product_id)}}">
+            <div class="col-sm-3">
+                <div class="product-image-wrapper">
+                    <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="{{URL::to('public/uploads/products/'.$prod->product_image_main)}}" alt="" />
+                                <h4>{{number_format($prod->product_price).' '.'VNĐ'}}</h4>
+                                <p>{{$prod->product_name}}</p>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Buy</a>
+                            </div>
+                            
                     </div>
-                    
+                <!-- <div class="choose">
+                        <ul class="nav nav-pills nav-justified">
+                            <li><a href="#"><i class="fa fa-plus-square"></i>Thêm yêu thích</a></li>
+                            <li><a href="#"><i class="fa fa-plus-square"></i>So sánh</a></li>
+                        </ul>
+                    </div> -->
+                </div>
+            
             </div>
-           <!-- <div class="choose">
-                <ul class="nav nav-pills nav-justified">
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Thêm yêu thích</a></li>
-                    <li><a href="#"><i class="fa fa-plus-square"></i>So sánh</a></li>
-                </ul>
-            </div> -->
-        </div>
-</a>
-    </div>
-@endforeach
+        </a>
+    @endforeach
     
 </div><!--features_items-->
 <div class="category-tab"><!--category-tab-->
