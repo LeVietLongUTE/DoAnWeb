@@ -9,11 +9,7 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-            <th style="width:20px;">
-              <label class="i-checks m-b-none">
-                <input type="checkbox"><i></i>
-              </label>
-            </th>
+            
             <th>Tên loại sản phẩm</th>
             <th>Tên danh mục</th>
             <th>Mô tả</th>
@@ -31,7 +27,7 @@
           ?>
           @foreach ($list_breed as $key => $breed)
           <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+            
             
             <td>{{$breed->breed_name}}</td>
             <td>{{$breed->category_name}}</td>
