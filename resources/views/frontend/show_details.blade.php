@@ -1,6 +1,5 @@
 @extends('welcome')
 @section('content')
-
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 						

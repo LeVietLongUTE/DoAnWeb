@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function index(){
         $list_category = DB::table('tb_category_product')->where('category_status',1)->get();
         $list_breed = DB::table('tb_breed_product')->where('breed_status',1)->get();
-        $list_product = DB::table('tb_product')->where('product_status',1)->limit(4)->get();
+        $list_product = DB::table('tb_product')->where('product_status',1)->orderby('product_id','desc')->limit(8)->get();
         return view('frontend.home')->with('category',$list_category)->with('breed',$list_breed)->with('product',$list_product);
         
     }

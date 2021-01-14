@@ -34,20 +34,30 @@
 						<h2>Danh mục sản phẩm</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 							<div class="panel panel-default">
-								@foreach($category as $key => $cate)    
+								@foreach($category as $key => $cate)   
+								<?php for ($i=0; $i < $key; $i++) { 
+
+								?> 
+								<?php } ?>
 									<div class="panel-heading">
-										<h4 class="panel-title"><a href="{{URL::to('/danhmucsanpham/'.$cate->category_id)}}" >{{$cate->category_name}} </a></h4>
+										<h4 class="panel-title"><a href="{{URL::to('/danhmucsanpham/'.$cate->category_id)}}" >
+										<?php
+											echo $cate->category_name;
+										?>
+							
+											@foreach($breed as $key => $dmc)   
+												<div class="panel-body">
+													<ul>
+														<li><a href="#">{{$dmc->breed_name}}</a></li>
+														
+													</ul>
+												</div>
+											@endforeach
+										
+									 </a></h4>
 									</div>
 								@endforeach
 								
-								@foreach($breed as $key => $dmc)   
-									<div class="panel-body">
-										<ul>
-											<li><a href="#">{{$dmc->breed_name}}</a></li>
-											
-										</ul>
-									</div>
-									@endforeach
 								
 							</div>
 							
