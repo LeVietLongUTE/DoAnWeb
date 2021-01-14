@@ -69,64 +69,23 @@
 						<h2>Danh Mục Sản Phẩm</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a href="#" >
-											Chó
-										</a>
-									</h4>
-								</div>
-								<div id="dog" >
+								@foreach($category as $key => $cate)    
+									<div class="panel-heading">
+										<h4 class="panel-title"><a href="{{URL::to('/danhmucsanpham/'.$cate->category_id)}}" >{{$cate->category_name}} </a></h4>
+									</div>
+								@endforeach
+								
+								@foreach($breed as $key => $dmc)   
 									<div class="panel-body">
 										<ul>
-											<li><a href="#">Nike </a></li>
-											<li><a href="#">Under Armour </a></li>
-											<li><a href="#">Adidas </a></li>
-											<li><a href="#">Puma</a></li>
-											<li><a href="#">ASICS </a></li>
+											<li><a href="#">{{$dmc->breed_name}}</a></li>
+											
 										</ul>
 									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a href="#">
-											Mèo
-										</a>
-									</h4>
-								</div>
-								<div id="cat">
-									<div class="panel-body">
-										<ul>
-											<li><a href="#">Fendi</a></li>
-											<li><a href="#">Guess</a></li>
-											<li><a href="#">Valentino</a></li>
-											<li><a href="#">Dior</a></li>
-											<li><a href="#">Versace</a></li>
-									
-										</ul>
-									</div>
-								</div>
+									@endforeach
+								
 							</div>
 							
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a href="#">
-											Thức ăn
-										</a>
-									</h4>
-								</div>
-								<div id="food">
-									<div class="panel-body">
-										<ul>
-											<li><a href="#">Cho mèo</a></li>
-											<li><a href="#">Cho chó</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
 							
 						</div><!--/category-products-->
 					

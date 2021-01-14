@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\URL;
 
 class HomeController extends Controller
 {
     //
     public function index(){
-        return view('frontend.home');
+        $list_category = DB::table('tb_category_product')->where('category_status',1)->get();
+        $list_breed = DB::table('tb_breed_product')->where('breed_status',1)->get();
+        $list_product = DB::table('tb_product')->where('product_status',1)->limit(4)->get();
+        return view('frontend.home')->with('category',$list_category)->with('breed',$list_breed)->with('product',$list_product);
         
     }
     public function gioithieucho() {
