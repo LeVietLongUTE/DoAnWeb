@@ -106,6 +106,8 @@ Route::GET('/lienhe','HomeController@lienhe');
 Route::get('/add-user','loginController@show_formAddUser');
 Route::POST('/add-user','loginController@show_formAddUser');
 Route::POST('/save-user','loginController@save_User');
+// chi tiêt san pham
+Route::get('/chi-tiet-san-pham/{product_id}','productController@details_product');
 
 //list user
 Route::get('/list-user','loginController@show_listUser');

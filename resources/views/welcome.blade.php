@@ -65,7 +65,7 @@
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
-						<h2>Thể Loại</h2>
+						<h2>Danh mục sản phẩm</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 							<div class="panel panel-default">
 								@foreach($category as $key => $cate)    

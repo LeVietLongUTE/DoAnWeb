@@ -138,11 +138,11 @@ class productController extends Controller
                 $new_img1 = $request->nameProduct.'_phụ1_'.rand(0,99).'.'.$get_img1->getClientOriginalExtension();
                 $get_img1->move('public/uploads/products',$new_img1);
                 $data['product_image1'] = $new_img1;
-<<<<<<< Updated upstream
+
             }else{
                 $data['product_image1'] = '';
             }
-=======
+
             }else{
                 $data['product_image1'] = '';
             }
@@ -183,7 +183,7 @@ class productController extends Controller
             }else{
                 $data['product_image1'] = '';
             }
->>>>>>> Stashed changes
+
             if ($get_img2) {
                 $new_img2 = $request->nameProduct.'_phụ2_'.rand(0,99).'.'.$get_img2->getClientOriginalExtension();
                 $get_img2->move('public/uploads/products',$new_img2);
@@ -198,11 +198,11 @@ class productController extends Controller
             }else{
                 $data['product_image3'] = '';
             }
-<<<<<<< Updated upstream
+
             $get_img->move('public/uploads/products',$new_img);
             $data['product_image_main'] = $new_img;
-=======
->>>>>>> Stashed changes
+
+
             if( empty($request->nameProduct) or empty($request->ageProduct) or empty($request->priceProduct) or empty($request->tiemProduct) or empty($request->xuatxuProduct) ){
                 Session::put('message','Bạn đã nhập rỗng dữ liệu không được phép');
                 return Redirect::to('/edit-product/'.$product_id);
@@ -223,8 +223,8 @@ class productController extends Controller
         DB::table('tb_product')->where('product_id',$product_id)->delete();
         Session::put('message','Xóa sản phẩm thành công');
         return Redirect::to('list-product');
-<<<<<<< Updated upstream
-=======
+
+
     }
     public function view_product($product_id) {
         $list_product = DB::table('tb_product')
@@ -233,6 +233,14 @@ class productController extends Controller
        ->select('tb_product.*','category_name','breed_name')->where('product_id',$product_id)->get();
        $manager_product = view('backend.product.view_product')->with('list_product',$list_product);
         return view('admin_layout')->with('backend.product.view_product',$manager_product);
->>>>>>> Stashed changes
+
+    }
+
+    //end admin
+    public function details_product($product_id) {
+        $list_category = DB::table('tb_category_product')->where('category_status',1)->get();
+        $list_breed = DB::table('tb_breed_product')->where('breed_status',1)->get();
+
+        return view('frontend.show_details')->with('breed',$list_breed)->with('product',$list_product);
     }
 }
