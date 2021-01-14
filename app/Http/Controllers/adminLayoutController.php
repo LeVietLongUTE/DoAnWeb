@@ -33,12 +33,15 @@ class adminLayoutController extends Controller
     }
     public function save_categoryProduct(Request $request) {
         $data = array();
+        if (!$request->description) {
+            $request->description = '';
+        }
         $data = [
             'category_name' => $request->nameCategory,
             'category_descript' => $request->description,
             'category_status' => $request->category_status
         ];
-        if( empty($request->nameCategory) or empty($request->description)){
+        if( empty($request->nameCategory)){
             Session::put('error','Bạn đã nhập rỗng dữ liệu không được phép');
             return Redirect::to('/add-category-product');
         }else{

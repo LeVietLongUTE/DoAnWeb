@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTbBreedProduct extends Migration
+class CreateTbBanner extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateTbBreedProduct extends Migration
      */
     public function up()
     {
-        Schema::create('tb_breed_product', function (Blueprint $table) {
-            $table->Increments('breed_id');
-            $table->string('category_id');
-            $table->string('breed_name');
-            $table->string('breed_description');
-            $table->integer('breed_status');
+        Schema::create('tb_banner', function (Blueprint $table) {
+            $table->Increments('banner_id');
+            $table->string('banner_image');
+            $table->integer('banner_status');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateTbBreedProduct extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_breed_product');
+        Schema::dropIfExists('tb_banner');
     }
 }

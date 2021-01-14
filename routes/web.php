@@ -109,4 +109,20 @@ Route::get('/trang-chu','HomeController@index');
 
     Route::POST('/update-user/{user_id}','loginController@update_user');
     Route::GET('/delete-user/{user_id}','loginController@delete_user');
+
+
+    //Banner
+    Route::get('/add-banner','bannerController@show_formAddBanner');
+    Route::POST('/add-banner','bannerController@show_formAddBanner');
+    Route::POST('/save-banner','bannerController@save_Banner');
+
+    //list user
+    Route::get('/list-banner','bannerController@show_listBanner');
+    Route::POST('/list-banner','bannerController@show_listBanner');
+    //edit user
+    Route::get('/edit-banner/{banner_id}','bannerController@edit_banner');
+    Route::POST('/edit-banner/{banner_id}','bannerController@edit_banner');
+
+    Route::POST('/update-banner/{user_id}','bannerController@update_banner');
+    Route::GET('/delete-banner/{user_id}','bannerController@delete_banner');
 // });

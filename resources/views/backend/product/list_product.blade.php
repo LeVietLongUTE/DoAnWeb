@@ -9,11 +9,7 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-            <th style="width:20px;">
-              <label class="i-checks m-b-none">
-                <input type="checkbox"><i></i>
-              </label>
-            </th>
+           
             <th>Tên sản phẩm</th>
             <th>Tên danh mục sản phẩm</th>
             <th>Tên loại sản phẩm</th>
@@ -38,7 +34,7 @@
           ?>
           @foreach ($list_product as $key => $product)
           <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+           
             
             <td>{{$product->product_name}}</td>
             <td>{{$product->category_name}}</td>
@@ -78,7 +74,7 @@
               <a href="{{URL::to('/edit-product/'.$product->product_id)}}" style="font-size: 20px" class="active " ui-toggle-class="">
                 <i class="icon fa fa-pencil text-success text-active"></i>
               </a>
-              <a onclick="return confirm('Bạn có chắc muốn xóa danh mục này hay không?')" href="{{URL::to('/delete-product/'.$product->product_id)}}" style="font-size: 20px" class="active ui-toggle-class="" >
+              <a onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này hay không?')" href="{{URL::to('/delete-product/'.$product->product_id)}}" style="font-size: 20px" class="active ui-toggle-class="" >
                 <i class="icon fa fa-times text-danger text"></i></a>
             </td>
           </tr>       

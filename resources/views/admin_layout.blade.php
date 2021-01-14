@@ -57,7 +57,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     $id = Session::get('id');
                     if($name){
                         // echo '<script>alert('.$message.');</script>';
-                        echo $name;
+                        echo $name.'123';
+
                         Session::put('message',null);
                     }	
                 ?>
@@ -134,12 +135,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                    
                     <a href="#">
                         <i class="fa fa-archive"></i>
-                        <span>Sản phẩm</span>
+                        <span>Quản lý banner</span>
                     </a>
                     <ul>
                     
-                        <li><a href="{{URL::to('/add-product')}}">Thêm sản phẩm</a></li>
-                        <li><a href="{{URL::to('/list-product')}}">List sản phẩm</a></li>
+                        <li><a href="{{URL::to('/add-banner')}}">Thêm banner</a></li>
+                        <li><a href="{{URL::to('/list-banner')}}">List banner</a></li>
                     </ul>
                 </li>
                

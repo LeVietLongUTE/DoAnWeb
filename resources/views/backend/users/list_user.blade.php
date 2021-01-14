@@ -9,11 +9,7 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-            <th style="width:20px;">
-              <label class="i-checks m-b-none">
-                <input type="checkbox"><i></i>
-              </label>
-            </th>
+            
             <th>Tên người dùng</th>
             <th>Email</th>
             <th>Password(md5)</th>
@@ -31,7 +27,7 @@
           ?>
           @foreach ($list_user as $key => $user)
           <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+           
             
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
@@ -56,7 +52,7 @@
               <a href="{{URL::to('/edit-user/'.$user->id)}}" style="font-size: 20px" class="active " ui-toggle-class="">
                 <i class="icon fa fa-pencil text-success text-active"></i>
               </a>
-              <a onclick="return confirm('Bạn có chắc muốn xóa danh mục này hay không?')" href="{{URL::to('/delete-user/'.$user->id)}}" style="font-size: 20px" class="active ui-toggle-class="" >
+              <a onclick="return confirm('Bạn có chắc muốn xóa tài khoản này hay không?')" href="{{URL::to('/delete-user/'.$user->id)}}" style="font-size: 20px" class="active ui-toggle-class="" >
                 <i class="icon fa fa-times text-danger text"></i></a>
             </td>
           </tr>       

@@ -51,17 +51,17 @@ use Illuminate\Support\Facades\DB;
                             </div>
                             <div class="form-group">
                                 <label for="imageProductMain">Hình ảnh chính</label>
-                                <input type="file" class="form-control" name="imageProduct" id="imageProduct" placeholder=""
+                                <input type="file" class="form-control" name="imageProductMain" id="imageProductMain" placeholder=""
                                 value="{{$product->product_image_main}}">
                                 <p>{{$product->product_image_main}}</p>
-                                {{-- <div>
-                                    <img src="public/uploads/products/{{$product->product_image_main}}" height="100" width="100">
-                                </div> --}}
+                                <div>
+                                    <img src="../public/uploads/products/{{$product->product_image_main}}" height="100" width="100">
+                                </div>
 
                             </div>
                             <div class="form-group">
                                 <label for="imageProduct1">Hình ảnh phụ 1 </label>
-                                <input type="file" class="form-control" name="imageProduct" id="imageProduct" placeholder=""
+                                <input type="file" class="form-control" name="imageProduct1" id="imageProduct1" placeholder=""
                                 value="{{$product->product_image1}}">
                                 <p>{{$product->product_image1}}</p>
                                 {{-- <div>
@@ -71,7 +71,7 @@ use Illuminate\Support\Facades\DB;
                             </div>
                             <div class="form-group">
                                 <label for="imageProduct2">Hình ảnh phụ 2</label>
-                                <input type="file" class="form-control" name="imageProduct" id="imageProduct" placeholder=""
+                                <input type="file" class="form-control" name="imageProduct2" id="imageProduct2" placeholder=""
                                 value="{{$product->product_image2}}">
                                 <p>{{$product->product_image2}}</p>
                                 {{-- <div>
@@ -81,7 +81,7 @@ use Illuminate\Support\Facades\DB;
                             </div>
                             <div class="form-group">
                                 <label for="imageProduct3">Hình ảnh phụ 3</label>
-                                <input type="file" class="form-control" name="imageProduct" id="imageProduct" placeholder=""
+                                <input type="file" class="form-control" name="imageProduct3" id="imageProduct3" placeholder=""
                                 value="{{$product->product_image3}}">
                                 <p>{{$product->product_image3}}</p>
                                 {{-- <div>
