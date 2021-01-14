@@ -9,15 +9,6 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-
-            <th style="width:20px;">
-              <label class="i-checks m-b-none">
-                <input type="checkbox"><i></i>
-              </label>
-            </th>
-
-            
-
             <th>Tên người dùng</th>
             <th>Email</th>
             <th>Password(md5)</th>
@@ -35,11 +26,6 @@
           ?>
           @foreach ($list_user as $key => $user)
           <tr>
-
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-
-           
-
             
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>

@@ -30,6 +30,13 @@
                                 <input type="file" class="form-control" name="imageBanner" id="imageBanner" placeholder="">
                             </div>
                             <div class="form-group">
+                                <label>Kiểu hiển thị </label>
+                                <select name="banner_note" class="form-control input-sm m-bot15">
+                                    <option value="1">Slide </option>
+                                    <option value="0">Banner đứng</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label>Hiển thị</label>
                                 <select name="banner_status" class="form-control input-sm m-bot15">
                                     <option value="1">Hiện</option>

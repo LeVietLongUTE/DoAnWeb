@@ -189,6 +189,7 @@ class loginController extends Controller
                 Session::put('message','Cập nhật tài khoản thành công');
                 return Redirect::to('list-user');
             }
+        }
     }
 
     public function delete_user($user_id) {
@@ -197,4 +198,3 @@ class loginController extends Controller
         return Redirect::to('list-user');
     }
 }
-?>

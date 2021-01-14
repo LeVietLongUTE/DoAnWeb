@@ -63,7 +63,7 @@ class productController extends Controller
             }
             $get_img->move('public/uploads/products',$new_img);
             $data['product_image_main'] = $new_img;
-            if( empty($request->nameProduct) or empty($request->ageProduct) or empty($request->priceProduct) or empty($request->tiemProduct) or empty($request->xuatxuProduct) ){
+            if( empty($request->nameProduct) or empty($request->ageProduct) or empty($request->priceProduct) or empty($request->tiemProduct) or empty($request->xuatxuProduct) or empty($request->description)){
                 Session::put('message','Bạn đã nhập rỗng dữ liệu không được phép');
                 return Redirect::to('/add-product');
             }else{

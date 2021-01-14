@@ -17,6 +17,7 @@ class bannerController extends Controller
     public function save_Banner(Request $request) {
         $data = array();
         $data = [
+            'banner_note' => $request->banner_note,
             'banner_status' => $request->banner_status
         ];
         $get_img = $request->file('imageBanner');
@@ -48,9 +49,9 @@ class bannerController extends Controller
         return Redirect::to('list-banner');
     }
 
-    public function active_category($banner_id) {
+    public function active_banner($banner_id) {
         DB::table('tb_banner')->where('banner_id',$banner_id)->update(['banner_status'=>1]);
-        Session::put('message','Hiện danh mục thành công');
+        Session::put('message','Hiện banner thành công');
         return Redirect::to('list-banner');
     }
 

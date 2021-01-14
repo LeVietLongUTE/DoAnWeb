@@ -11,6 +11,7 @@
           <tr>
             <th>Mã banner</th>
             <th>Ảnh banner</th>
+            <th>Ghi chú</th>
             <th>Hiển thị</th>
             <th style="width:30px;"></th>
           </tr>
@@ -29,6 +30,15 @@
             
             <td>{{$banner->banner_id}}</td>
             <td><img width="200px" height="100px" src="public/uploads/products/{{$banner->banner_image}}" alt="banner"></td>
+            <td><span class="text-ellipsis">
+              <?php
+                 if ($banner->banner_note==1){
+                   echo 'Slide';
+                 }else {
+                   echo 'Banner đứng';
+                 }
+               ?>
+           </span></td>
             <td><span class="text-ellipsis">
                <?php
                   if ($banner->banner_status==1){

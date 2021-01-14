@@ -26,14 +26,6 @@ use Illuminate\Support\Facades\DB;
                         @foreach ($edit_banner as $key =>$banner)
                         <form role="form" action="{{URL::to('/update-banner/'.$banner->banner_id)}}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
-                            {{-- <div class="form-group">
-                                <label>Mã banner</label>
-                                <select name="category_name" class="form-control input-sm m-bot15">
-                                    @foreach ($list_category as $key => $category)
-                                    <option value="{{$category->category_id}}">{{$category->category_name}}</option>
-                                    @endforeach
-                                </select>
-                            </div> --}}
                             <div class="form-group">
                                 <label>Mã banner</label>
                                 <input type="text" class="form-control" name="idBanner" id="idBanner" placeholder="" 
@@ -47,7 +39,6 @@ use Illuminate\Support\Facades\DB;
                                 <div>
                                     <img src="../public/uploads/products/{{$banner->banner_image}}" height="100" width="200">
                                 </div>
-
                             </div>
                             <div class="form-group" style="display: flex; justify-content: space-around">
                                 <button type="submit" name="edit_banner" class="btn btn-info">Chỉnh sửa banner</button>

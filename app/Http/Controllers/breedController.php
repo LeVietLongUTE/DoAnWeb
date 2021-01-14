@@ -40,7 +40,7 @@ class breedController extends Controller
             }else{
                 DB::table('tb_breed_product')->insert($data);
                 Session::put('message','Thêm danh mục sản phẩm thành công');
-                return Redirect::to('/list-breed-product');
+                return Redirect::to('/add-breed-product');
             }
         }
     }
@@ -86,30 +86,21 @@ class breedController extends Controller
             'breed_name' => $request->nameBreed,
             'breed_description' =>$request->description
         ];
-
         foreach ($data__ as $key => $data__) {
             # code...
        
-
         if (empty($request->nameBreed)){
             Session::put('error','Bạn đã nhập rỗng dữ liệu không được phép');
             return Redirect::to('/edit-breed/'.$breed_product_id);
         }else {
-
-            if (DB::table('tb_breed_product')->where('breed_name',$request->nameBreed)->first()){
-
             if (DB::table('tb_breed_product')->where('breed_name',$request->nameBreed)->first() && ($request->nameBreed != $data__->breed_name)){
-
                 Session::put('error','Tên loại sản phẩm đã tồn tại!');
                 return Redirect::to('/edit-breed/'.$breed_product_id);
             }else{
                 DB::table('tb_breed_product')->where('breed_id',$breed_product_id)->update($data);
                 Session::put('message','Cập nhật loại sản phẩm thành công');
                 return Redirect::to('list-breed');
-
-
             }
-
         }
     }
     }

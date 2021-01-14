@@ -227,7 +227,11 @@ Route::GET('/delete-user/{user_id}','loginController@delete_user');
     Route::get('/edit-banner/{banner_id}','bannerController@edit_banner');
     Route::POST('/edit-banner/{banner_id}','bannerController@edit_banner');
 
-    Route::POST('/update-banner/{user_id}','bannerController@update_banner');
-    Route::GET('/delete-banner/{user_id}','bannerController@delete_banner');
+    Route::POST('/update-banner/{banner_id}','bannerController@update_banner');
+    Route::GET('/delete-banner/{banner_id}','bannerController@delete_banner');
+
+    //status banner
+    Route::get('/unactive-banner/{banner_id}','bannerController@un_active_banner');
+    Route::get('/active-banner/{banner_id}','bannerController@active_banner');
 // });
 
