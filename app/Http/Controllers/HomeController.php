@@ -47,4 +47,6 @@ class HomeController extends Controller
         return view('frontend.slide')->with('list_slide',$list_slide)->with('bannerD',$list_bannerD);
     }
 
+    
+
 }

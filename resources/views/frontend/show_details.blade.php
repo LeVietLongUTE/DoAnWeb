@@ -1,3 +1,4 @@
+
 @extends('welcome')
 @section('content')
 				
@@ -13,15 +14,20 @@
 								  <!-- Wrapper for slides -->
 								  <div class="carousel-inner">
 									<div class="item active" style="display: flex; justify-content: space-around">
+									
 										@if($prod->product_image1)
-									  		<a href=""><img width="100px" height="150px"  style="display: inline; padding:10px" src="{{asset('public/uploads/products/'.$prod->product_image1)}}" alt=""></a> 
+
+									  		<a class="icon_mxh" href="#"><img style="display: inline; padding:10px" src="{{asset('public/uploads/products/'.$prod->product_image1)}}" alt=""></a> 
 										@endif
 										@if($prod->product_image2)
-									  		<a href=""><img width="100px" height="150px" style="display: inline; padding:10px" src="{{asset('public/uploads/products/'.$prod->product_image2)}}" alt=""></a> 
+									  		<a class="icon_mxh" href="#"><img style="display: inline; padding:10px" src="{{asset('public/uploads/products/'.$prod->product_image2)}}" alt=""></a> 
 										@endif
 										@if($prod->product_image3)
-									  		<a href=""><img width="100px" height="150px" style="display: inline; padding:10px" src="{{asset('public/uploads/products/'.$prod->product_image3)}}" alt=""></a> 
+									  		<a class="icon_mxh" href="#"><img style="display: inline; padding:10px" src="{{asset('public/uploads/products/'.$prod->product_image3)}}" alt=""></a> 
+
+									  		
 										@endif
+									
 									</div>
 								</div>
 								  <!-- Controls -->
@@ -54,15 +60,29 @@
 									@endif
 
 								</p>
-								<img src="{{asset('public/frontend/images/product-details/rating.png')}}" alt="" />
+								<img src="{{asset('public/frontend/images/product-details/rating.png')}}" alt="" /></br></br>
 								
 								<div >
 									<h4>US $59</h4>
 								
 									<button type="button" class="btn btn-fefault cart">
+								<div>
+									<h4>Giá:{{number_format($prod->product_price).' '.'VNĐ'}}</h4>
+								<form  action="{{URL::to('/save_car')}}" method="post">
+								@csrf
+
+									<!-- Equivalent to... -->
+									<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+								<input name="productid_hidden" type="hidden" value="{{$prod->product_id}}">
+								<button type="submit" class="btn btn-fefault cart" >
+
 										<i class="fa fa-shopping-cart"></i>
-										Add to cart
+										<a>Add to cart </a>
 									</button>
+								
+
+								</form>
+									
 								</div>
 					
 								<a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
@@ -75,7 +95,7 @@
 						<div class="col-sm-12">
 							<ul class="nav nav-tabs">
 
-								<li class="active"><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>
+								<li class="active"><a href="#reviews" data-toggle="tab">Đánh Giá</a></li>
 							</ul>
 						</div>
 						<div class="tab-content">

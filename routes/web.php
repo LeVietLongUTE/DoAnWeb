@@ -24,6 +24,7 @@ Route::get('/trang-chu','HomeController@index');
 Route::get('/login','loginController@show_login');
 Route::get('/register','loginController@show_register');
 
+
 Route::get('/admin-layout','adminLayoutController@index');
 
 Route::get('/dashboard','loginController@show_dashboard');
@@ -236,4 +237,8 @@ Route::GET('/delete-user/{user_id}','loginController@delete_user');
     Route::get('/unactive-banner/{banner_id}','bannerController@un_active_banner');
     Route::get('/active-banner/{banner_id}','bannerController@active_banner');
 // });
+
+
+//giohang
+Route::post('/save_car','CarController@save_car');
 

@@ -11,6 +11,7 @@
     <link href="{{asset('public/frontend/css/font-awesome.min.css')}}" rel="stylesheet">
 
 	<link href="{{asset('public/frontend/css/main1.css')}}" rel="stylesheet">
+	<link href="{{asset('public/frontend/css/main2.css')}}" rel="stylesheet">
 	<link rel="stylesheet" href="{{asset('public/frontend/css/animate.css')}}">
    {{-- [if lt IE 9] --}}
     <script src="{{asset('public/frontend/js/html5shiv.js')}}"></script>
@@ -24,7 +25,7 @@
 	
 @include('frontend.header')
 @include('frontend.slide')	
-{{-- @yield('slide') --}}
+
 	
 	
 	<section>
@@ -106,5 +107,6 @@
 	<script src="{{asset('public/frontend/js/price-range.js')}}"></script>
     <script src="{{asset('public/frontend/js/jquery.prettyPhoto.js')}}"></script>
     <script src="{{asset('public/frontend/js/main.js')}}"></script>
+	
 </body>
 </html>

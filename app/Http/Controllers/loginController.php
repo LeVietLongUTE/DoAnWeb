@@ -203,4 +203,6 @@ class loginController extends Controller
         Session::put('message','Xóa tài khoản thành công');
         return Redirect::to('list-user');
     }
+
+
 }

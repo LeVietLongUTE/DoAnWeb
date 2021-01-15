@@ -57,7 +57,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     $id = Session::get('id');
                     if($name){
                         // echo '<script>alert('.$message.');</script>';
-                        echo $name.'123';
+                        echo $name.'';
 
                         Session::put('message',null);
                     }	
