@@ -1,7 +1,7 @@
 @extends('welcome')
 @section('content')
 				
-					@foreach ($product as $key => $prod)
+		@foreach ($product as $key => $prod)
 					<div class="product-details"><!--product-details-->
 		
 						<div class="col-sm-5">
@@ -14,13 +14,13 @@
 								  <div class="carousel-inner">
 									<div class="item active" style="display: flex; justify-content: space-around">
 										@if($prod->product_image1)
-									  		<a href=""><img style="display: inline; padding:10px" src="{{asset('public/uploads/products/'.$prod->product_image1)}}" alt=""></a> 
+									  		<a href=""><img width="100px" height="150px"  style="display: inline; padding:10px" src="{{asset('public/uploads/products/'.$prod->product_image1)}}" alt=""></a> 
 										@endif
 										@if($prod->product_image2)
-									  		<a href=""><img style="display: inline; padding:10px" src="{{asset('public/uploads/products/'.$prod->product_image2)}}" alt=""></a> 
+									  		<a href=""><img width="100px" height="150px" style="display: inline; padding:10px" src="{{asset('public/uploads/products/'.$prod->product_image2)}}" alt=""></a> 
 										@endif
 										@if($prod->product_image3)
-									  		<a href=""><img style="display: inline; padding:10px" src="{{asset('public/uploads/products/'.$prod->product_image3)}}" alt=""></a> 
+									  		<a href=""><img width="100px" height="150px" style="display: inline; padding:10px" src="{{asset('public/uploads/products/'.$prod->product_image3)}}" alt=""></a> 
 										@endif
 									</div>
 								</div>
@@ -70,7 +70,7 @@
 						
 						</div>
 					</div><!--/product-details-->
-					@endforeach
+				
 					<div class="category-tab shop-details-tab"><!--category-tab-->
 						<div class="col-sm-12">
 							<ul class="nav nav-tabs">
@@ -110,9 +110,32 @@
 						<h2 class="title text-center">Sản phẩm đề xuất</h2>
 						
 						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+							
 							<div class="carousel-inner">
 								<div class="item active">	
+									@foreach ($related_product as $key1 => $related)
 									<div class="col-sm-4">
+									
+										<div class="product-image-wrapper">
+											<div class="single-products">
+												<div class="productinfo text-center">
+													{{-- @if ($related->breed_id == $prod->breed_id) --}}
+														<img width="100px" height="300px" style="display: inline" src="{{asset('public/uploads/products/'.$related->product_image_main)}}" alt="" />
+														<p>{{$related->product_name}}</p>
+														<h2> {{number_format($related->product_price)}} VND</h2>
+														<a href="{{URL::to('/chi-tiet-san-pham/'.$related->product_id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Xem chi tiết</a> 
+													{{-- @endif --}}
+													{{-- <img src="{{asset('public/frontend/images/home/recommend1.jpg')}}" alt="" />
+													
+													
+													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
+												</div>
+											</div>
+										</div>
+										
+									</div>
+									@endforeach	
+									{{-- <div class="col-sm-4">
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
@@ -123,49 +146,37 @@
 												</div>
 											</div>
 										</div>
-									</div>
+									</div> --}}
 									
 								</div>
 								<div class="item">	
+									@foreach ($related_product as $key1 => $related)
 									<div class="col-sm-4">
+									
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="{{asset('public/frontend/images/home/recommend1.jpg')}}" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+													{{-- @if ($related->breed_id == $prod->breed_id) --}}
+														<img width="100px" height="300px" style="display: inline" src="{{asset('public/uploads/products/'.$related->product_image_main)}}" alt="" />
+														<p>{{$related->product_name}}</p>
+														<h2>
+															
+														 {{number_format($related->product_price)}}
+															
+															VND</h2>
+														<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Xem chi tiết</a> 
+													{{-- @endif --}}
+													{{-- <img src="{{asset('public/frontend/images/home/recommend1.jpg')}}" alt="" />
+													
+													
+													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
 												</div>
-												
 											</div>
 										</div>
+										
 									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{{asset('public/frontend/images/home/recommend2.jpg')}}" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{{asset('public/frontend/images/home/recommend3.jpg')}}" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
+									@endforeach	
+									
 								</div>
 							</div>
 							<div class="btn_slide">
@@ -175,8 +186,10 @@
 								<a class="right recommended-item-control next_slide" href="#recommended-item-carousel" data-slide="next">
 									<i class="fa fa-angle-right"></i>
 								</a>	
-							</div>		
+							</div>
+						
 						</div>
 					</div><!--/recommended_items-->
+					@endforeach
 				</div>
 @endsection

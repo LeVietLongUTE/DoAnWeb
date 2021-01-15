@@ -29,11 +29,11 @@
 			<div class="col-xs-12">
 				<div class="pages-title-text text-center">
 					<h2>Giới Thiệu Thông Tin Về Những Chú Mèo Cưng</h2>
-					<ul class="text-left">
+					{{-- <ul class="text-left">
                         <a href="{{URL::to('/')}}">Trang chủ</a>
                         <a href="{{URL::to('/gioithieus')}}"><span> // </span>gioithieu</a>
 						<a><span> // </span>meo</a>
-					</ul>
+					</ul> --}}
 				</div>
 			</div>
 		</div>

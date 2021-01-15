@@ -237,19 +237,18 @@ class productController extends Controller
         ->join('tb_category_product','tb_category_product.category_id','=','tb_product.category_id')
         ->join('tb_breed_product','tb_breed_product.breed_id','=','tb_product.breed_id')
         ->select('tb_product.*','breed_name','category_name')->where('product_id',$product_id)->where('product_status',1)->limit(4)->get();
-        
-        // $list_product2 = DB::table('tb_product')
-        // ->join('tb_category_product','tb_category_product.category_id','=','tb_product.category_id')
-        // ->join('tb_breed_product','tb_breed_product.breed_id','=','tb_product.breed_id')
-        // ->select('tb_product.*','breed_name','category_name')
-        // ->where('product_id',$product_id)->where('product_status',1)
-        // ->where('')->limit(4)->get();
+        foreach ($list_product as $key => $value) {
+            # code...
+            $breed_id = $value->breed_id;
+        }
+        $related_product = DB::table('tb_product')->join('tb_breed_product','tb_breed_product.breed_id','=','tb_product.breed_id')
+        ->where('tb_breed_product.breed_id',$breed_id)->whereNotIn('tb_product.product_id',[$product_id])->limit(3)->get();
 
         $list_slide = DB::table('tb_banner')->where('banner_status',1)->get();
         $list_bannerD = DB::table('tb_banner')->where('banner_status',1)->where('banner_note',0)->get()->first();
 
         return view('frontend.show_details')->with('category',$list_category)->with('breed',$list_breed)->with('product',$list_product)
-        ->with('list_slide',$list_slide)->with('bannerD',$list_bannerD);
+        ->with('list_slide',$list_slide)->with('bannerD',$list_bannerD)->with('related_product',$related_product);
 
 
     }
