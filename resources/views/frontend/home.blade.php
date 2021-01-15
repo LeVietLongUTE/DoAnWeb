@@ -8,7 +8,7 @@
                 <div class="product-image-wrapper">
                     <div class="single-products">
                             <div class="productinfo text-center">
-                                <img src="{{URL::to('public/uploads/products/'.$prod->product_image_main)}}" alt="" />
+                                <img src="{{asset('public/uploads/products/'.$prod->product_image_main)}}" alt="" />
                                 <h4>{{number_format($prod->product_price).' '.'VNĐ'}}</h4>
                                 <p>{{$prod->product_name}}</p>
                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Buy</a>

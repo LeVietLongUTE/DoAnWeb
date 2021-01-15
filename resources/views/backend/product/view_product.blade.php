@@ -38,10 +38,7 @@
                 <?php 
                     if($product->product_image1) { ?>
 
-                        <td><img src="../public/uploads/products/{{$product->product_image1}}" height="100" width="100"></td>
-
                         <img src="../public/uploads/products/{{$product->product_image1}}" height="100" width="100">
-
                 <?php    
                     }else {
                         echo 'chưa chèn ảnh';
@@ -56,9 +53,6 @@
                 <?php 
 
                     if($product->product_image1) { ?>
-                        <td><img src="../public/uploads/products/{{$product->product_image2}}" height="100" width="100"></td>
-
-                    if($product->product_image2) { ?>
                         <img src="../public/uploads/products/{{$product->product_image2}}" height="100" width="100">
 
                 <?php    
@@ -74,11 +68,9 @@
                 <?php 
 
                     if($product->product_image1) { ?>
-                        <td><img src="../public/uploads/products/{{$product->product_image2}}" height="100" width="100"></td>
-
-                    if($product->product_image2) { ?>
                         <img src="../public/uploads/products/{{$product->product_image2}}" height="100" width="100">
 
+            
                 <?php    
                     }else {
                         echo 'chưa chèn ảnh';
