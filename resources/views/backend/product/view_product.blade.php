@@ -110,6 +110,16 @@
                 <td>Mô tả thêm:  </td>
                 <td>{{$product->product_description}}</td>
             </tr>
+            <tr>
+                <td>Tình trạng: </td>
+                <td>
+                    @if ($product->product_status==1)
+						<?php echo 'còn hàng'?>
+					@else
+						<?php echo 'hết hàng'?>
+					@endif
+                </td>
+            </tr>
         </tbody>
         @endforeach
       </table>

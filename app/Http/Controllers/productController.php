@@ -233,7 +233,17 @@ class productController extends Controller
     public function details_product($product_id) {
         $list_category = DB::table('tb_category_product')->where('category_status',1)->get();
         $list_breed = DB::table('tb_breed_product')->where('breed_status',1)->get();
-        $list_product = DB::table('tb_product')->where('product_id',$product_id)->where('product_status',1)->limit(4)->get();
+        $list_product = DB::table('tb_product')
+        ->join('tb_category_product','tb_category_product.category_id','=','tb_product.category_id')
+        ->join('tb_breed_product','tb_breed_product.breed_id','=','tb_product.breed_id')
+        ->select('tb_product.*','breed_name','category_name')->where('product_id',$product_id)->where('product_status',1)->limit(4)->get();
+        
+        // $list_product2 = DB::table('tb_product')
+        // ->join('tb_category_product','tb_category_product.category_id','=','tb_product.category_id')
+        // ->join('tb_breed_product','tb_breed_product.breed_id','=','tb_product.breed_id')
+        // ->select('tb_product.*','breed_name','category_name')
+        // ->where('product_id',$product_id)->where('product_status',1)
+        // ->where('')->limit(4)->get();
 
         $list_slide = DB::table('tb_banner')->where('banner_status',1)->get();
         $list_bannerD = DB::table('tb_banner')->where('banner_status',1)->where('banner_note',0)->get()->first();

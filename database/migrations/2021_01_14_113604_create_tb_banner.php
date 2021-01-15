@@ -16,6 +16,7 @@ class CreateTbBanner extends Migration
         Schema::create('tb_banner', function (Blueprint $table) {
             $table->Increments('banner_id');
             $table->string('banner_image');
+            $table->integer('banner_note');
             $table->integer('banner_status');
             $table->timestamps();
         });
