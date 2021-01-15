@@ -29,11 +29,11 @@
 			<div class="col-xs-12">
 				<div class="pages-title-text text-center">
 					
-					<ul class="text-left">
+					{{-- <ul class="text-left">
                         <a href="{{URL::to('/')}}">Trang chủ</a>
                         <a href="#"><span> // </span>gioithieu</a>
 						
-                    </ul>
+                    </ul> --}}
                     <h2>Giới Thiệu Thông Tin PET & FRIEND</h2>
 				</div>
 			</div>
