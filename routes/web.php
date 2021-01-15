@@ -234,3 +234,7 @@ Route::GET('/delete-user/{user_id}','loginController@delete_user');
     Route::get('/active-banner/{banner_id}','bannerController@active_banner');
 // });
 
+
+//giohang
+Route::post('/save_car','CarController@save_car');
+

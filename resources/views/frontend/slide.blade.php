@@ -1,6 +1,4 @@
-{{-- @extends('welcome')
-@section('slide')
-     --}}
+
 
      <section id="slider"><!--slider-->
 		<center>
@@ -50,4 +48,3 @@
 		</div>
 	</center>
 	</section><!--/slider-->
-{{-- @endsection --}}

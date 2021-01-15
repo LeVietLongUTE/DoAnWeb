@@ -44,5 +44,7 @@ class HomeController extends Controller
         $list_bannerD = DB::table('tb_banner')->where('banner_status',1)->where('banner_note',0)->get()->first();
         return view('frontend.slide')->with('list_slide',$list_slide)->with('bannerD',$list_bannerD);
     }
+    
+
 }
 ?>
