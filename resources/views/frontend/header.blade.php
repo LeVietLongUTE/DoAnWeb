@@ -31,7 +31,7 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="logo pull-left">
-							<a href="#" ><img style="width: 120px" src="{{('public/frontend/images/logo_pet.png')}}" alt="" /></a>
+							<a href="#" ><img style="width: 120px" src="{{asset('public/frontend/images/logo_pet.png')}}" alt="" /></a>
 						</div>
 						
 					</div>

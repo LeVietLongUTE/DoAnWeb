@@ -75,13 +75,13 @@
 											<div class="mxh">
 													<h2>Mạng xã hội</h2>
 												<div class="icon_mxh">
-													<a href="https://www.facebook.com/"><img src="{{('public/frontend/images/facebook_ic.jpg')}}"></a>
+													<a href="https://www.facebook.com/"><img src="{{asset('public/frontend/images/facebook_ic.jpg')}}"></a>
 												</div>
 												<div class="icon_mxh">
-													<a href="https://www.instagram.com/"><img src="{{('public/frontend/images/instagram_ic.png')}}"></a>
+													<a href="https://www.instagram.com/"><img src="{{asset('public/frontend/images/instagram_ic.png')}}"></a>
 												</div>
 												<div class="icon_mxh">
-													<a href="https://id.zalo.me/account?continue=https%3A%2F%2Fchat.zalo.me%2F"><img src="{{('public/frontend/images/zalos_ic.png')}}"></a>
+													<a href="https://id.zalo.me/account?continue=https%3A%2F%2Fchat.zalo.me%2F"><img src="{{asset('public/frontend/images/zalos_ic.png')}}"></a>
 												</div>
 
 											</div>

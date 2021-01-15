@@ -7,8 +7,6 @@
     <center>
     <div class="slide_view">
        
-            
-
                 <div id="myslide" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <?php $i=0; ?>
