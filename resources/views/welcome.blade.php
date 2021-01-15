@@ -107,6 +107,9 @@
 	<script src="{{asset('public/frontend/js/price-range.js')}}"></script>
     <script src="{{asset('public/frontend/js/jquery.prettyPhoto.js')}}"></script>
     <script src="{{asset('public/frontend/js/main.js')}}"></script>
-	
+	<script type='text/javascript'>
+		var maxWidth = (document.body.clientWidth);
+		var maxHeight = (document.body.clientHeight);
+		</script>
 </body>
 </html>

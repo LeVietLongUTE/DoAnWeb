@@ -90,9 +90,13 @@
 						</div>
 					</div>
 					<div class="col-sm-6">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
-						</div>
+						<form action="{{URL::to('/tim-kiem')}}" method="POST">
+							{{ csrf_field() }}
+							<div class="search_box pull-right">
+								<input type="text" name="Inputsearch"  placeholder="Tìm kiếm sản phẩm"/>
+								<a  href='javascript:window.scrollTo(maxWidth,maxHeight/2)'><button type="submit" class="btn btn-warning btn-sm" >Tìm kiếm</button></a>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>

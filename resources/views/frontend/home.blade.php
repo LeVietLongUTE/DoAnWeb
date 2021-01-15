@@ -3,14 +3,15 @@
 <div class="features_items"><!--features_items-->
     <h2 class="title text-center">Sản phẩm Mới</h2>
     @foreach($product as $key => $prod)
-        <a href="{{asset('/chi-tiet-san-pham/'.$prod->product_id)}}">
+        <a href="{{URL::to('/chi-tiet-san-pham/'.$prod->product_id)}}">
             <div class="col-sm-3">
                 <div class="product-image-wrapper">
                     <div class="single-products">
                             <div class="productinfo text-center">
-                                <img src="{{asset('public/uploads/products/'.$prod->product_image_main)}}" alt="" />
+                                <img width="100px" height="300px" src="{{asset('public/uploads/products/'.$prod->product_image_main)}}" alt="" />
                                 <h4>{{number_format($prod->product_price).' '.'VNĐ'}}</h4>
                                 <p>{{$prod->product_name}}</p>
+                                <p>{{$prod->breed_name}}</p>
                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Buy</a>
                             </div>
                             
@@ -321,14 +322,16 @@
     
     <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            @foreach ($related as $key => $relate)
+          
             <div class="item active">	
+                @foreach ($related as $key => $relate)
                 <div class="col-sm-4">
                     <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">
                                 <img width="150px" height="200px" src="{{asset('public/uploads/products/'.$relate->product_image_main)}}" alt="" />
                                 <p>{{$relate->product_name}}</p>
+                                <p>{{$relate->breed_name}}</p>
                                 <h2>$56</h2>
                                 
                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -336,9 +339,28 @@
                         </div>
                     </div>
                 </div>
-                
+                @endforeach
             </div>
-            @endforeach
+            <div class="item ">	
+                @foreach ($related as $key => $relate)
+                <div class="col-sm-4">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img width="150px" height="200px" src="{{asset('public/uploads/products/'.$relate->product_image_main)}}" alt="" />
+                                <p>{{$relate->product_name}}</p>
+                                <p>{{$relate->breed_name}}</p>
+                                <h2>$56</h2>
+                                
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            
+       
             
         </div>
         <div class="btn_slide">
