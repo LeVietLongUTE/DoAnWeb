@@ -25,15 +25,9 @@
 										@if($prod->product_image3)
 									  		<a class="icon_mxh" href="#"><img style="display: inline; padding:10px" src="{{asset('public/uploads/products/'.$prod->product_image3)}}" alt=""></a> 
 
-									  		<a href=""><img width="100px" height="150px"  style="display: inline; padding:10px" src="{{asset('public/uploads/products/'.$prod->product_image1)}}" alt=""></a> 
+									  		
 										@endif
-										@if($prod->product_image2)
-									  		<a href=""><img width="100px" height="150px" style="display: inline; padding:10px" src="{{asset('public/uploads/products/'.$prod->product_image2)}}" alt=""></a> 
-										@endif
-										@if($prod->product_image3)
-									  		<a href=""><img width="100px" height="150px" style="display: inline; padding:10px" src="{{asset('public/uploads/products/'.$prod->product_image3)}}" alt=""></a> 
-
-										@endif
+									
 									</div>
 								</div>
 								  <!-- Controls -->
