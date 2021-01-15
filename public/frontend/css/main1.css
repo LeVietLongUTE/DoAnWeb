@@ -760,7 +760,7 @@ div.btn_slide {
   display: flex;
   font-size: 40px;
   position: relative;
-  bottom: 50%;
+  bottom: 250px;
 }
 
 a.prev_slide , a.next_slide {

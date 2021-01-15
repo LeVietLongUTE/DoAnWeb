@@ -56,8 +56,8 @@
 								</p>
 								<img src="{{asset('public/frontend/images/product-details/rating.png')}}" alt="" />
 								
-								<div>
-									<p>US $59</p>
+								<div >
+									<h4>US $59</h4>
 								
 									<button type="button" class="btn btn-fefault cart">
 										<i class="fa fa-shopping-cart"></i>
@@ -158,12 +158,13 @@
 												<div class="productinfo text-center">
 													{{-- @if ($related->breed_id == $prod->breed_id) --}}
 														<img width="100px" height="300px" style="display: inline" src="{{asset('public/uploads/products/'.$related->product_image_main)}}" alt="" />
-														<p>{{$related->product_name}}</p>
-														<h2>
+														<h3 style=" font-weight: 600">{{$related->product_name}}</h3>
+														<h4 style=" font-weight: 600">{{$related->breed_name}}</h4>
+														<h4 style="color: red">
 															
 														 {{number_format($related->product_price)}}
 															
-															VND</h2>
+															VND</h4>
 														<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Xem chi tiết</a> 
 													{{-- @endif --}}
 													{{-- <img src="{{asset('public/frontend/images/home/recommend1.jpg')}}" alt="" />

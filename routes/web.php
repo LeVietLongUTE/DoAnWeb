@@ -83,15 +83,18 @@ Route::POST('/save-product','productController@save_Product');
 //list product
 Route::get('/list-product','productController@show_listProduct');
 Route::POST('/list-product','productController@show_listProduct');
-//status Breed
+//status product
 Route::get('/unactive-product/{product_id}','productController@un_active_product');
 Route::get('/active-product/{product_id}','productController@active_product');
-//edit Breed
+//edit product
 Route::get('/edit-product/{product_id}','productController@edit_product');
 Route::POST('/edit-product/{product_id}','productController@edit_product');
 
 Route::POST('/update-product/{product_id}','productController@update_product');
 Route::GET('/delete-product/{product_id}','productController@delete_product');
+// Route::get('/list-product','productController@phantrang');
+
+
 
 
 //Gio thieu

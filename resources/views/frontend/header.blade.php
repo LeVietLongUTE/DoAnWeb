@@ -63,8 +63,8 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="{{URL::to('/')}}" class="active">Trang Chủ</a></li>					
-								<li><a href="#">Mua Hàng</a>	</li> 						
-								<li><a href="#">Thanh Toán</a>	</li> 
+								<li><a href="#">Cửa hàng</a></li> 						
+								<li><a href="#">Thanh Toán</a></li> 
 								
 								<li class="dropdown"><a href="{{URL::to('/gioithieus')}}">Giới thiệu<i class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">

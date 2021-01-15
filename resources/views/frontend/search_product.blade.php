@@ -1,7 +1,7 @@
 @extends('welcome')
 @section('content')
 <div class="features_items"><!--features_items-->
-    <h2 class="title text-center">Sản phẩm Mới</h2>
+    <h2 class="title text-center">Kết quả tìm kiếm</h2>
     @foreach($product as $key => $prod)
         <a href="{{URL::to('/chi-tiet-san-pham/'.$prod->product_id)}}">
             <div class="col-sm-3">
@@ -321,16 +321,14 @@
     
     <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            @foreach ($related as $key => $relate)
             <div class="item active">	
                 <div class="col-sm-4">
                     <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">
-                                <img width="150px" height="200px" src="{{asset('public/uploads/products/'.$relate->product_image_main)}}" alt="" />
-                                <p>{{$relate->product_name}}</p>
+                                <img src="{{('public/frontend/images/home/recommend1.jpg')}}" alt="" />
                                 <h2>$56</h2>
-                                
+                                <p>Easy Polo Black Edition</p>
                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                             </div>
                         </div>
@@ -338,8 +336,47 @@
                 </div>
                 
             </div>
-            @endforeach
-            
+            <div class="item">	
+                <div class="col-sm-4">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="{{('public/frontend/images/home/recommend1.jpg')}}" alt="" />
+                                <h2>$56</h2>
+                                <p>Easy Polo Black Edition</p>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="{{('public/frontend/images/home/recommend2.jpg')}}" alt="" />
+                                <h2>$56</h2>
+                                <p>Easy Polo Black Edition</p>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="{{('public/frontend/images/home/recommend3.jpg')}}" alt="" />
+                                <h2>$56</h2>
+                                <p>Easy Polo Black Edition</p>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="btn_slide">
             <a class="left recommended-item-control prev_slide" href="#recommended-item-carousel" data-slide="prev">

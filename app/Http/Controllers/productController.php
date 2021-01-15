@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
+use App\product;
 
 class productController extends Controller
 {
@@ -84,12 +85,16 @@ class productController extends Controller
     }
 
     public function show_listProduct() {
-        
+        $data = DB::table('tb_product')->paginate(3);
        $list_product = DB::table('tb_product')
        ->join('tb_breed_product','tb_product.breed_id','=','tb_breed_product.breed_id')
        ->join('tb_category_product','tb_breed_product.category_id','=','tb_category_product.category_id')
        ->select('tb_product.*','category_name','breed_name')->get();
-       $manager_product = view('backend.product.list_product')->with('list_product',$list_product);
+    //    $phantrang = $list_product->paginate(3);
+       $manager_product = view('backend.product.list_product')->with('list_product',$list_product)->with('data',$data)
+      ;
+
+       
         return view('admin_layout')->with('backend.product.list_product',$manager_product);
     }
     //Thay đổi ẩn hiện product
@@ -242,6 +247,7 @@ class productController extends Controller
             $breed_id = $value->breed_id;
         }
         $related_product = DB::table('tb_product')->join('tb_breed_product','tb_breed_product.breed_id','=','tb_product.breed_id')
+        ->select('tb_product.*','tb_breed_product.breed_name')
         ->where('tb_breed_product.breed_id',$breed_id)->whereNotIn('tb_product.product_id',[$product_id])->limit(3)->get();
 
         $list_slide = DB::table('tb_banner')->where('banner_status',1)->get();
@@ -252,6 +258,11 @@ class productController extends Controller
 
 
     }
+    // public function phantrang() {
+    //     $phantrang = product::paginate(3);
+    //     view('admin_layout',compact('phantrang'));
+    // }
+
 }
 
 

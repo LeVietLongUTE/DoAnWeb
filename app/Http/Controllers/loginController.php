@@ -31,8 +31,14 @@ class loginController extends Controller
 
     //move den trang tong quan cua admin
     public function show_dashboard() {
-        $this->AuthLogin();
-        return view('backend.dashboard');
+
+
+        // $this->AuthLogin();
+
+        $product = DB::table('tb_product')->get();
+        $user = DB::table('users')->get();
+
+        return view('backend.dashboard')->with('product',$product)->with('user',$user);
     }
 
     //chuyen tran login
