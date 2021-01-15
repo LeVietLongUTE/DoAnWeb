@@ -63,11 +63,6 @@ use Illuminate\Support\Facades\DB;
                                     <img src="../public/uploads/products/{{$product->product_image_main}}" height="100" width="100">
                                 </div>
 
-                                <div>
-                                    <img src="../public/uploads/products/{{$product->product_image_main}}" height="100" width="100">
-                                </div>
-
-
                             </div>
                             <div class="form-group">
                                 <label for="imageProduct1">Hình ảnh phụ 1 </label>
