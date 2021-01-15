@@ -24,6 +24,7 @@ Route::get('/trang-chu','HomeController@index');
 Route::get('/login','loginController@show_login');
 Route::get('/register','loginController@show_register');
 
+
 Route::get('/admin-layout','adminLayoutController@index');
 
 Route::get('/dashboard','loginController@show_dashboard');

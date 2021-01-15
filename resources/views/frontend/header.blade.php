@@ -38,9 +38,20 @@
 					<div class="col-sm-6">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
+							<li><a href="#"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+								@if(Auth::check())
+								<li><a href="#"><i class="fa fa-lock"></i> Chào Bạn{{Auth::users()->name}}</a>
+								<li><a href="{{URL::to('/logout')}}"><i class="fa fa-key"></i> Đăng xuất</a></li>
+								
+								@else
 								<li><a href="#"><i class="fa fa-user"></i> Tài khoản</a></li>
-								<li><a href="#"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
-								<li><a href="#"><i class="fa fa-lock"></i> Đăng nhập</a></li>
+								<li><a href="{{URL::to('/login')}}"><i class="fa fa-lock"></i> Đăng nhập</a>
+								@endif
+                                </ul>
+                            </li>
+                        </ul>
+							
+								</li>
 							</ul>
 						</div>
 					</div>
