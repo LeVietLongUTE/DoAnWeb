@@ -38,20 +38,16 @@
 					<div class="col-sm-6">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-							<li><a href="{{URL::to('cart')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
-								@if(Auth::check())
-								<li><a href="#"><i class="fa fa-lock"></i> Chào Bạn{{Auth::users()->name}}</a>
-								<li><a href="{{URL::to('/logout')}}"><i class="fa fa-key"></i> Đăng xuất</a></li>
 								
-								@else
-								<li><a href="#"><i class="fa fa-user"></i> Tài khoản</a></li>
-								<li><a href="{{URL::to('/login')}}"><i class="fa fa-lock"></i> Đăng nhập</a>
-								@endif
-                                </ul>
-                            </li>
-                        </ul>
+									<li><a href="#"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+									
+									<li><a href="#"><i class="fa fa-lock"></i> Chào Bạn</a></li>
+									<li><a href="{{URL::to('/logout')}}"><i class="fa fa-key"></i> Đăng xuất</a></li>
+									
 							
-								</li>
+									<li><a href="#"><i class="fa fa-user"></i> Tài khoản</a></li>
+									<li><a href="{{URL::to('/login')}}"><i class="fa fa-lock"></i> Đăng nhập</a> </li>
+									
 							</ul>
 						</div>
 					</div>
@@ -74,8 +70,8 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="{{URL::to('/')}}" class="active">Trang Chủ</a></li>					
-								<li><a href="{{URL::to('cua-hang')}}">Cửa hàng</a></li> 						
-								<li><a href="#">Thanh Toán</a></li> 
+								<li><a href="#">Mua Hàng</a>	</li> 						
+								<li><a href="#">Thanh Toán</a>	</li> 
 								
 								<li class="dropdown"><a href="{{URL::to('/gioithieus')}}">Giới thiệu<i class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
@@ -90,13 +86,9 @@
 						</div>
 					</div>
 					<div class="col-sm-6">
-						<form action="{{URL::to('/tim-kiem')}}" method="POST">
-							{{ csrf_field() }}
-							<div class="search_box pull-right">
-								<input type="text" name="Inputsearch"  placeholder="Tìm kiếm sản phẩm"/>
-								<a  href='javascript:window.scrollTo(maxWidth,maxHeight/2)'><button type="submit" class="btn btn-warning btn-sm" >Tìm kiếm</button></a>
-							</div>
-						</form>
+						<div class="search_box pull-right">
+							<input type="text" placeholder="Search"/>
+						</div>
 					</div>
 				</div>
 			</div>

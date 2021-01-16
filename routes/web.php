@@ -16,12 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','HomeController@index');
 Route::get('/trang-chu','HomeController@index');
 
-Route::post('/tim-kiem','HomeController@search');
-
-Route::get('/tim-kiem','HomeController@search');
-
-Route::get('/cua-hang/{category_name}/{breed_name}','HomeController@store');
-Route::get('/cua-hang','HomeController@store_product');
 /* ---- Back End ---- */
 
 
@@ -45,7 +39,6 @@ Route::get('/logout','loginController@logout');
 
 //Category
 //add category
-
 Route::get('/add-category-product','adminLayoutController@show_formAddCategory');
 Route::POST('/add-category-product','adminLayoutController@show_formAddCategory');
 Route::POST('/save-category-product','adminLayoutController@save_categoryProduct');
@@ -91,18 +84,15 @@ Route::POST('/save-product','productController@save_Product');
 //list product
 Route::get('/list-product','productController@show_listProduct');
 Route::POST('/list-product','productController@show_listProduct');
-//status product
+//status Breed
 Route::get('/unactive-product/{product_id}','productController@un_active_product');
 Route::get('/active-product/{product_id}','productController@active_product');
-//edit product
+//edit Breed
 Route::get('/edit-product/{product_id}','productController@edit_product');
 Route::POST('/edit-product/{product_id}','productController@edit_product');
 
 Route::POST('/update-product/{product_id}','productController@update_product');
 Route::GET('/delete-product/{product_id}','productController@delete_product');
-// Route::get('/list-product','productController@phantrang');
-
-
 
 
 //Gio thieu
@@ -247,8 +237,5 @@ Route::GET('/delete-user/{user_id}','loginController@delete_user');
 
 
 //giohang
-Route::post('/save-cart','CarController@save_cart');
-Route::get('/cart','CarController@show_cart');
-Route::post('/cart','CarController@show_cart');
+Route::post('/save_car','CarController@save_car');
 
-Route::get('/delete-to-cart/{rowId}','CarController@delete_to_cart');
