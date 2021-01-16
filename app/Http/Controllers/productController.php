@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
 use App\product;
-
+session_start();
 class productController extends Controller
 {
     public function show_formAddProduct() {

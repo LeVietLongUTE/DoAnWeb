@@ -3,9 +3,7 @@
 <?php 
         $error = Session::get('error');
         $message = Session::get('message');
-         echo '<pre>';
-        print_r($message);
-        echo '</pre>';
+        
         if($error){
             echo '<script>alert("'.$error.'");</script>';
             Session::put('error',null);
@@ -21,9 +19,9 @@
     <h2 style="text-align: center; color:orange; font-weight: 800">Giỏ hàng</h2>
         <?php 
             $content = Cart::content();
-            echo '<pre>';
-            print_r($content);
-            echo '</pre>';
+            // echo '<pre>';
+            // print_r();
+            // echo '</pre>';
         ?>
             <table id="cart" class="table table-hover "> 
             <thead> 

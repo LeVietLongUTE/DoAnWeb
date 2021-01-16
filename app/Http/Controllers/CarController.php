@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
 use Gloudemans\Shoppingcart\Facades\Cart;
+session_start();
 class CarController extends Controller
 {
     public function save_cart(Request $request) {
@@ -32,7 +33,7 @@ class CarController extends Controller
         foreach ($data__ as $key => $value) {
             # code...
             if($value->id == $productid){
-                Session::put('messenger','Sản phẩn đã tồn tại trong giỏ hàng');
+                Session::put('message','Sản phẩn đã tồn tại trong giỏ hàng');
                 return Redirect()->back();
 
             }

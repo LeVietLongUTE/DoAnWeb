@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 use function Ramsey\Uuid\v1;
-
+session_start();
 class breedController extends Controller
 {
     public function show_formAddBreed() {

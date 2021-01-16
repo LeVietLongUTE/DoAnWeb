@@ -46,7 +46,17 @@ class loginController extends Controller
         return view('login');
     }
     public function loginadmin(Request $request) {
-       
+        
+        // $data = [
+        //     'email' =>$request->admin_email,
+        //     'password' => md5($request->admin_pass)
+        // ];
+        // if (Auth::attempt($data)){
+        //     return Redirect::to('/dashboard');
+        // }else{
+        //     return Redirect::to('/login');
+        // }
+
         $admin_email = $request->admin_email;
         $admin_password = md5($request->admin_pass);
         $result = DB::table('users')->where('email',$admin_email)->where('password',$admin_password)->where('level',1)->first();

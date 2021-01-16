@@ -12,21 +12,21 @@ class registerController extends Controller
     public function index() {
         return view('register');
     }
-    public function register(array $data)
-    {
-        # code...
-        $this->validate(request(), [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+    // public function register(array $data)
+    // {
+    //     # code...
+    //     $this->validate(request(), [
+    //         'name' => 'required',
+    //         'email' => 'required|email',
+    //         'password' => 'required'
+    //     ]);
 
         
-        return User::create(Request([
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'name' => $data['name'],
-            'level' => 0
-        ]));
-    }
+    //     return User::create(Request([
+    //         'email' => $data['email'],
+    //         'password' => bcrypt($data['password']),
+    //         'name' => $data['name'],
+    //         'level' => 0
+    //     ]));
+    // }
 }

@@ -6,23 +6,7 @@
 		color:black;
 	}
 </style>
-<?php 
-        $error = Session::get('error');
-		$message = Session::get('message');
-		echo '<pre>';
-        print_r($message);
-        echo '</pre>';
-        if($error){
-            echo '<script>alert("'.$error.'");</script>';
-            Session::put('error',null);
-        }else {
-            if($message){
-			echo '<script>alert("'.$message.'");</script>';
-			Session::put('message',null);
-		    }	
-        }
-		
-	?>
+
 				
 		@foreach ($product as $key => $prod)
 					<div class="product-details"><!--product-details-->
