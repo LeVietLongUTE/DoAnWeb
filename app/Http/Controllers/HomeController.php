@@ -17,8 +17,8 @@ class HomeController extends Controller
         ->where('breed_status',1)->get();
         $list_product = DB::table('tb_product')->join('tb_breed_product','tb_breed_product.breed_id','=','tb_product.breed_id')
         ->select('tb_product.*','tb_breed_product.breed_name')->where('product_status',1)->orderby('product_id','desc')->limit(8)->get();
-        $list_slide = DB::table('tb_banner')->where('banner_status',1)->get();
-        $list_bannerD = DB::table('tb_banner')->where('banner_status',1)->where('banner_note',0)->get()->first();
+        $list_slide = DB::table('tb_banner')->where('banner_status',1)->where('banner_note',1)->get();
+        $list_bannerD = DB::table('tb_banner')->where('banner_status',1)->where('banner_note',0)->get();
         $list_product2 = DB::table('tb_product')->join('tb_breed_product','tb_breed_product.breed_id','=','tb_product.breed_id')
         ->select('tb_product.*','tb_breed_product.breed_name')->where('product_status',1)->orderby('product_id','desc')->limit(3)->get();
         return view('frontend.home')->with('category',$list_category)->with('breed',$list_breed)->with('product',$list_product)
@@ -63,14 +63,25 @@ class HomeController extends Controller
         ->select('tb_product.*','tb_breed_product.breed_name')->where('product_status',1)->orderby('product_id','desc')->limit(3)->get();
 
         $search_product = DB::table('tb_product')->where('product_name','like','%'.$keywords.'%')->get();
+        
         foreach ($search_product as $key => $value) {
             # code...
             $breed_id = $value->breed_id;
         }
-        $data_breed = DB::table('tb_breed_product')->where('breed_id',$breed_id)->get('breed_name');
-        return view('frontend.search_product')->with('category',$list_category)->with('breed',$list_breed)
-        ->with('list_slide',$list_slide)->with('bannerD',$list_bannerD)->with('related',$list_product2)
-        ->with('search_product',$search_product)->with('breed_data',$data_breed);
+        if(empty($breed_id)){
+            
+       
+            Session::put('error','Không có thú cưng bạn muốn tìm');
+            return Redirect()->back()->with('category',$list_category)->with('breed',$list_breed)
+            ->with('list_slide',$list_slide)->with('bannerD',$list_bannerD)->with('related',$list_product2)
+            ->with('search_product',$search_product);
+        }else {
+            $data_breed = DB::table('tb_breed_product')->where('breed_id',$breed_id)->get('breed_name');
+            return view('frontend.search_product')->with('category',$list_category)->with('breed',$list_breed)
+            ->with('list_slide',$list_slide)->with('bannerD',$list_bannerD)->with('related',$list_product2)
+            ->with('search_product',$search_product)->with('breed_data',$data_breed);
+        }
+        
     }
     
     public function store($category_name, $breed_name){

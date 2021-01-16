@@ -85,12 +85,11 @@ class productController extends Controller
     }
 
     public function show_listProduct() {
-        $data = DB::table('tb_product')->paginate(3);
+        $data = DB::table('tb_product')->get();
        $list_product = DB::table('tb_product')
        ->join('tb_breed_product','tb_product.breed_id','=','tb_breed_product.breed_id')
        ->join('tb_category_product','tb_breed_product.category_id','=','tb_category_product.category_id')
-       ->select('tb_product.*','category_name','breed_name')->get();
-    //    $phantrang = $list_product->paginate(3);
+       ->select('tb_product.*','category_name','breed_name')->paginate(5);
        $manager_product = view('backend.product.list_product')->with('list_product',$list_product)->with('data',$data)
       ;
 
@@ -147,22 +146,16 @@ class productController extends Controller
                 $new_img1 = $request->nameProduct.'_phụ1_'.rand(0,99).'.'.$get_img1->getClientOriginalExtension();
                 $get_img1->move('public/uploads/products',$new_img1);
                 $data['product_image1'] = $new_img1;
-            }else{
-                $data['product_image1'] = '';
             }
             if ($get_img2) {
                 $new_img2 = $request->nameProduct.'_phụ2_'.rand(0,99).'.'.$get_img2->getClientOriginalExtension();
                 $get_img2->move('public/uploads/products',$new_img2);
                 $data['product_image2'] = $new_img2;
-            }else{
-                $data['product_image2'] = '';
             }
             if ($get_img3) {
                 $new_img3 = $request->nameProduct.'_phụ3_'.rand(0,99).'.'.$get_img3->getClientOriginalExtension();
                 $get_img3->move('public/uploads/products',$new_img3);
                 $data['product_image3'] = $new_img3;
-            }else{
-                $data['product_image3'] = '';
             }
             $get_img->move('public/uploads/products',$new_img);
             $data['product_image_main'] = $new_img;
@@ -184,22 +177,16 @@ class productController extends Controller
                 $new_img1 = $request->nameProduct.'_phụ1_'.rand(0,99).'.'.$get_img1->getClientOriginalExtension();
                 $get_img1->move('public/uploads/products',$new_img1);
                 $data['product_image1'] = $new_img1;
-            }else{
-                $data['product_image1'] = '';
             }
             if ($get_img2) {
                 $new_img2 = $request->nameProduct.'_phụ2_'.rand(0,99).'.'.$get_img2->getClientOriginalExtension();
                 $get_img2->move('public/uploads/products',$new_img2);
                 $data['product_image2'] = $new_img2;
-            }else{
-                $data['product_image2'] = '';
             }
             if ($get_img3) {
                 $new_img3 = $request->nameProduct.'_phụ3_'.rand(0,99).'.'.$get_img3->getClientOriginalExtension();
                 $get_img3->move('public/uploads/products',$new_img3);
                 $data['product_image3'] = $new_img3;
-            }else{
-                $data['product_image3'] = '';
             }
             if( empty($request->nameProduct) or empty($request->ageProduct) or empty($request->priceProduct) or empty($request->tiemProduct) or empty($request->xuatxuProduct) ){
                 Session::put('message','Bạn đã nhập rỗng dữ liệu không được phép');

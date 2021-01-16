@@ -25,7 +25,7 @@
             <table id="cart" class="table table-hover "> 
             <thead> 
             <tr> 
-                <th style="width:20%">Tên sản phẩm</th> 
+                <th style="width:25% ">Thông tin sản phẩm</th> 
                 <th style="width:5%">Giá</th>  
                 <th style="width:1%">Xóa </th> 
             </tr> 
@@ -35,13 +35,13 @@
                 @foreach ($content as $item)
   
             <tr> 
-            <td data-th="Product" style="display: flex; justify-content: space-around;">   
+            <td data-th="Product" style="width: 100%; display: flex; justify-content: space-around;">   
 
-                <div  style="display: block">
+                <div  style="display: block; width: 40%">
                     <img style="display: block" width="200px" height="200px" src="{{asset('public/uploads/products/'.$item->options->image)}}" alt="">
                     {{-- <img style="display: block" width="200px" height="100px" src="public/frontend/images/alaska1.jpg" alt=""> --}}
                 </div> 
-                <div >
+                <div style="width:60%">
 
                     <h4 class="nomargin">Tên PET: {{$item->name}}</h4> 
                     <p>Giống PET: {{$item->options->breed_name}}</p> 

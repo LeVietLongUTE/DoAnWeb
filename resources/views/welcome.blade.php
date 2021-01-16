@@ -80,11 +80,13 @@
 						</div><!--/category-products-->
 					
 					
-						
+			
+							
+					
 						<div style="margin-bottom: 50px" class="shipping text-center"><!--shipping-->
 							<img src="{{asset('public/frontend/images/banner_1.jpg')}}" alt="" />
 						</div><!--/shipping-->
-					
+
 					</div>
 				</div>
 				

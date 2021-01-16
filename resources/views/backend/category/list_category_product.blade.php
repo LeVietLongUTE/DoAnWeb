@@ -74,7 +74,7 @@
           </tr>       
         </tbody>
         @endforeach
-        <div class="row" >{{$list_category->links()}}</div> 
+        <div class="row" style="display: flex; justify-content: center; margin-top:10px"  >{{$list_category->links()}}</div> 
       </table>
     </div>
     <footer class="panel-footer">

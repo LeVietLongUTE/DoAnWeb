@@ -21,6 +21,7 @@ Route::get('/tim-kiem','HomeController@search');
 
 Route::get('/cua-hang/{category_name}/{breed_name}','HomeController@store');
 Route::get('/cua-hang','HomeController@store_product');
+
 /* ---- Back End ---- */
 
 

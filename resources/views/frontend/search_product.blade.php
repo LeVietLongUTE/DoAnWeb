@@ -1,6 +1,20 @@
 @extends('welcome')
 @section('content')
 <div id="search" class="features_items"><!--features_items-->
+<?php 
+    $error = Session::get('error');
+    $message = Session::get('message');
+    if($error){
+        echo '<script>alert("'.$error.'");</script>';
+        Session::put('error',null);
+    }else {
+        if($message){
+        echo '<script>alert("'.$message.'");</script>';
+        Session::put('message',null);
+        }	
+    }
+    
+?>
     <h2 class="title text-center">Kết quả tìm kiếm</h2>
     @foreach($search_product as $key => $prod)
         <a href="{{URL::to('/chi-tiet-san-pham/'.$prod->product_id)}}">

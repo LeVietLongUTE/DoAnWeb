@@ -22,7 +22,7 @@ class adminLayoutController extends Controller
         if ($admin_id) {
             return Redirect::to('backend.dashboard');
         }else {
-            Redirect::to('login');
+           return Redirect::to('login');
         }
     }
 
