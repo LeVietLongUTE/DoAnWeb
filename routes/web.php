@@ -19,6 +19,9 @@ Route::get('/trang-chu','HomeController@index');
 Route::post('/tim-kiem','HomeController@search');
 
 Route::get('/tim-kiem','HomeController@search');
+
+Route::get('/cua-hang/{category_name}/{breed_name}','HomeController@store');
+Route::get('/cua-hang','HomeController@store_product');
 /* ---- Back End ---- */
 
 
@@ -42,6 +45,7 @@ Route::get('/logout','loginController@logout');
 
 //Category
 //add category
+
 Route::get('/add-category-product','adminLayoutController@show_formAddCategory');
 Route::POST('/add-category-product','adminLayoutController@show_formAddCategory');
 Route::POST('/save-category-product','adminLayoutController@save_categoryProduct');
@@ -243,5 +247,8 @@ Route::GET('/delete-user/{user_id}','loginController@delete_user');
 
 
 //giohang
-Route::post('/save_car','CarController@save_car');
+Route::post('/save-cart','CarController@save_cart');
+Route::get('/cart','CarController@show_cart');
+Route::post('/cart','CarController@show_cart');
 
+Route::get('/delete-to-cart/{rowId}','CarController@delete_to_cart');

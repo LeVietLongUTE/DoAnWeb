@@ -68,5 +68,31 @@ class HomeController extends Controller
         ->with('search_product',$search_product);
     }
     
+    public function store($category_name, $breed_name){
+        
+        $breed = DB::table('tb_breed_product')->where('breed_name',$breed_name)->get('breed_id');
+        $list_category = DB::table('tb_category_product')->where('category_status',1)->get();
+        $list_breed = DB::table('tb_breed_product')
+        ->where('breed_status',1)->get();
+        foreach ($breed as $key => $breed) {
+            # code...
+            $product = DB::table('tb_product')->where('breed_id',$breed->breed_id)->where('product_status',1)->get();
+        }
+        $list_slide = DB::table('tb_banner')->where('banner_status',1)->get();
+        return view('frontend.store')->with('product',$product)->with('list_slide',$list_slide)->with('category',$list_category)
+        ->with('breed',$list_breed)->with('breed_name',$breed_name);
+
+    }
+    public function store_product() {
+        $list_category = DB::table('tb_category_product')->where('category_status',1)->get();
+        $list_breed = DB::table('tb_breed_product')
+        ->where('breed_status',1)->get();
+        $list_slide = DB::table('tb_banner')->where('banner_status',1)->get();
+        $product = DB::table('tb_product')
+        ->join('tb_breed_product','tb_breed_product.breed_id','=','tb_product.breed_id')->select('tb_product.*','tb_breed_product.breed_name')
+        ->where('product_status',1)->get();
+        return view('frontend.store')->with('product',$product)->with('list_slide',$list_slide)->with('category',$list_category)
+        ->with('breed',$list_breed);
+    }
 
 }

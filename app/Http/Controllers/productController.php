@@ -136,7 +136,7 @@ class productController extends Controller
         ];
         foreach ($data__ as $key => $data__) {
             # code...
-       
+        
         $get_img = $request->file('imageProductMain');
         $get_img1 = $request->file('imageProduct1');
         $get_img2 = $request->file('imageProduct2');

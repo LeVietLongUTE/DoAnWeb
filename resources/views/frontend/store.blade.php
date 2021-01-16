@@ -1,17 +1,22 @@
 @extends('welcome')
 @section('content')
 <div id="search" class="features_items"><!--features_items-->
-    <h2 class="title text-center">Kết quả tìm kiếm</h2>
-    @foreach($search_product as $key => $prod)
+    <h2 class="title text-center">Danh sách thú cưng hiện có thể giao dịch</h2>
+
+    
+    @foreach($product as $key => $prod)
+      
         <a href="{{URL::to('/chi-tiet-san-pham/'.$prod->product_id)}}">
             <div class="col-sm-3">
                 <div class="product-image-wrapper">
                     <div class="single-products">
                             <div class="productinfo text-center">
                                 <img width="100px" height="300px"  src="{{asset('public/uploads/products/'.$prod->product_image_main)}}" alt="" />
+                                <h5 style="color:orange">Tên PET: {{$prod->product_name}}</h5>
+                                <h5 style="color:red">Giống PET: {{$breed_name}}</h5>
                                 <h4>{{number_format($prod->product_price).' '.'VNĐ'}}</h4>
-                                <p>{{$prod->product_name}}</p>
-                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Buy</a>
+                                
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                             </div>
                             
                     </div>
@@ -29,7 +34,7 @@
     
 </div><!--features_items-->
 
-<div class="recommended_items"><!--recommended_items-->
+{{-- <div class="recommended_items"><!--recommended_items-->
     <h2 class="title text-center">Sản phẩm đề xuất</h2>
     
     <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
@@ -84,5 +89,5 @@
             </a>	
         </div>		
     </div>
-</div><!--/recommended_items-->
+</div><!--/recommended_items--> --}}
 @endsection

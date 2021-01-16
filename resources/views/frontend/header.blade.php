@@ -38,7 +38,7 @@
 					<div class="col-sm-6">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-							<li><a href="#"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+							<li><a href="{{URL::to('cart')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
 								@if(Auth::check())
 								<li><a href="#"><i class="fa fa-lock"></i> Chào Bạn{{Auth::users()->name}}</a>
 								<li><a href="{{URL::to('/logout')}}"><i class="fa fa-key"></i> Đăng xuất</a></li>
@@ -74,7 +74,7 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="{{URL::to('/')}}" class="active">Trang Chủ</a></li>					
-								<li><a href="#">Cửa hàng</a></li> 						
+								<li><a href="{{URL::to('cua-hang')}}">Cửa hàng</a></li> 						
 								<li><a href="#">Thanh Toán</a></li> 
 								
 								<li class="dropdown"><a href="{{URL::to('/gioithieus')}}">Giới thiệu<i class="fa fa-angle-down"></i></a>

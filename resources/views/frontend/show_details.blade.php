@@ -1,6 +1,28 @@
 
 @extends('welcome')
 @section('content')
+<style>
+	a.add-to-cart:: hover {
+		color:black;
+	}
+</style>
+<?php 
+        $error = Session::get('error');
+		$message = Session::get('message');
+		echo '<pre>';
+        print_r($message);
+        echo '</pre>';
+        if($error){
+            echo '<script>alert("'.$error.'");</script>';
+            Session::put('error',null);
+        }else {
+            if($message){
+			echo '<script>alert("'.$message.'");</script>';
+			Session::put('message',null);
+		    }	
+        }
+		
+	?>
 				
 		@foreach ($product as $key => $prod)
 					<div class="product-details"><!--product-details-->
@@ -39,20 +61,20 @@
 							<div class="product-information"><!--/product-information-->
 								<img src="images/product-details/new.jpg" class="newarrival" alt="" />
 								<h2>Tên: {{$prod->product_name}}</h2>
-								<h5>Loại vật nuôi: {{$prod->category_name}}</h5>
-								<p>Giống : {{$prod->breed_name}}</p>
-								<p>Giới tính: 
+								<h2>Loại vật nuôi: {{$prod->category_name}}</h2>
+								<h4>Giống : {{$prod->breed_name}}</h4>
+								<h4>Giới tính: 
 									@if ($prod->product_gender==1)
 										<?php echo 'Đực' ?>
 									@else 
 									<?php echo 'Cái' ?>
 									@endif
 
-								</p>
-								<p>Tiêm chủng (lần): {{$prod->product_tiem}} </p>
-								<p>Tháng tuổi: {{$prod->product_age}} </p>
-								<p>Mô tả thêm: {{$prod->product_description}}</p>
-								<p>Tình trạng: 
+								</h4>
+								<h4>Tiêm chủng (lần): {{$prod->product_tiem}} </h4>
+								<h4>Tháng tuổi: {{$prod->product_age}} </h4>
+								<h4>Mô tả thêm: {{$prod->product_description}}</h4>
+								<h4>Tình trạng: 
 									@if ($prod->product_status==1)
 										<?php echo 'còn hàng'?>
 									@else
@@ -61,24 +83,23 @@
 
 								</p>
 								<img src="{{asset('public/frontend/images/product-details/rating.png')}}" alt="" /></br></br>
-								
-								<div >
-									<h4>US $59</h4>
-								
-									<button type="button" class="btn btn-fefault cart">
+								<h4>Giá: {{number_format($prod->product_price).' '.'VNĐ'}}</h4>
+						
+
 								<div>
-									<h4>Giá:{{number_format($prod->product_price).' '.'VNĐ'}}</h4>
-								<form  action="{{URL::to('/save_car')}}" method="post">
+									
+								<form  action="{{URL::to('/save-cart')}}" method="post">
 								@csrf
 
 									<!-- Equivalent to... -->
 									<input type="hidden" name="_token" value="{{ csrf_token() }}" />
-								<input name="productid_hidden" type="hidden" value="{{$prod->product_id}}">
-								<button type="submit" class="btn btn-fefault cart" >
+									<input name="productid_hidden" type="hidden" value="{{$prod->product_id}}">
+									<button type="submit" class="btn btn-fefault cart" >
 
 										<i class="fa fa-shopping-cart"></i>
-										<a>Add to cart </a>
+										Thêm vào giỏ hàng 
 									</button>
+									
 								
 
 								</form>
@@ -134,6 +155,7 @@
 							<div class="carousel-inner">
 								<div class="item active">	
 									@foreach ($related_product as $key1 => $related)
+									<a href="{{URL::to('/chi-tiet-san-pham/'.$related->product_id)}}">
 									<div class="col-sm-4">
 									
 										<div class="product-image-wrapper">
@@ -141,8 +163,11 @@
 												<div class="productinfo text-center">
 													{{-- @if ($related->breed_id == $prod->breed_id) --}}
 														<img width="100px" height="300px" style="display: inline" src="{{asset('public/uploads/products/'.$related->product_image_main)}}" alt="" />
-														<p>{{$related->product_name}}</p>
-														<h2> {{number_format($related->product_price)}} VND</h2>
+														<h3 style=" font-weight: 600; color: black">{{$related->product_name}}</h3>
+														<h4 style=" font-weight: 600; color: black">{{$related->breed_name}}</h4>
+														<h4 style="color: red">
+														 {{number_format($related->product_price).' '.'VNĐ'}}
+															</h4>
 														<a href="{{URL::to('/chi-tiet-san-pham/'.$related->product_id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Xem chi tiết</a> 
 													{{-- @endif --}}
 													{{-- <img src="{{asset('public/frontend/images/home/recommend1.jpg')}}" alt="" />
@@ -154,6 +179,7 @@
 										</div>
 										
 									</div>
+									</a>
 									@endforeach	
 									{{-- <div class="col-sm-4">
 										<div class="product-image-wrapper">
@@ -171,6 +197,7 @@
 								</div>
 								<div class="item">	
 									@foreach ($related_product as $key1 => $related)
+									<a href="{{URL::to('/chi-tiet-san-pham/'.$related->product_id)}}">
 									<div class="col-sm-4">
 									
 										<div class="product-image-wrapper">
@@ -178,14 +205,14 @@
 												<div class="productinfo text-center">
 													{{-- @if ($related->breed_id == $prod->breed_id) --}}
 														<img width="100px" height="300px" style="display: inline" src="{{asset('public/uploads/products/'.$related->product_image_main)}}" alt="" />
-														<h3 style=" font-weight: 600">{{$related->product_name}}</h3>
-														<h4 style=" font-weight: 600">{{$related->breed_name}}</h4>
+														<h3 style=" font-weight: 600; color: black" >{{$related->product_name}}</h3>
+														<h4 style=" font-weight: 600; color: black">{{$related->breed_name}}</h4>
 														<h4 style="color: red">
 															
 														 {{number_format($related->product_price)}}
 															
 															VND</h4>
-														<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Xem chi tiết</a> 
+														<a href="{{URL::to('/chi-tiet-san-pham/'.$related->product_id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Xem chi tiết</a> 
 													{{-- @endif --}}
 													{{-- <img src="{{asset('public/frontend/images/home/recommend1.jpg')}}" alt="" />
 													
@@ -196,6 +223,7 @@
 										</div>
 										
 									</div>
+									</a>
 									@endforeach	
 									
 								</div>

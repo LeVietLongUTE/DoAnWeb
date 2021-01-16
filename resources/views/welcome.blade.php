@@ -20,15 +20,29 @@
     
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head><!--/head-->
-
+<style>
+	
+</style>
 <body>
 	
 @include('frontend.header')
 @include('frontend.slide')	
 
-	
-	
 	<section>
+		<?php 
+        $error = Session::get('error');
+        $message = Session::get('message');
+        if($error){
+            echo '<script>alert("'.$error.'");</script>';
+            Session::put('error',null);
+        }else {
+            if($message){
+			echo '<script>alert("'.$message.'");</script>';
+			Session::put('message',null);
+		    }	
+        }
+		
+	?>
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3">
@@ -37,7 +51,6 @@
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 							<div class="panel panel-default">
 								@foreach($category as $key => $cate)   
-
 									<div class="panel-heading">
 										<h4 class="panel-title"><a style="color: orange"  href="{{URL::to('/danhmucsanpham/'.$cate->category_id)}}" >
 											<?php
@@ -48,10 +61,8 @@
 												@if($cate->category_id == $dmc->category_id)
 												<div class="panel-body">
 									
-														<a href="#">
-															
+														<a onclick="changeActive()" id="link" href="{{URL::to('/cua-hang/'.$cate->category_name.'/'.$dmc->breed_name)}}" onclick="">
 															{{$dmc->breed_name}}
-														
 														</a>
 														
 													</ul>
@@ -110,6 +121,10 @@
 	<script type='text/javascript'>
 		var maxWidth = (document.body.clientWidth);
 		var maxHeight = (document.body.clientHeight);
+		function changeActive() {
+			document.getElementById("link").style.color = 'red';
+		}
 		</script>
+		
 </body>
 </html>
