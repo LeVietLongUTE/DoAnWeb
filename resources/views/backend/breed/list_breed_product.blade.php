@@ -56,6 +56,7 @@
         </tbody>
         @endforeach
       </table>
+      <div class="row" >{{$list_breed->links()}}</div> 
     </div>
     <footer class="panel-footer">
       <div class="row">

@@ -74,6 +74,7 @@
           </tr>       
         </tbody>
         @endforeach
+        <div class="row" >{{$list_category->links()}}</div> 
       </table>
     </div>
     <footer class="panel-footer">

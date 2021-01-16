@@ -58,7 +58,7 @@ class adminLayoutController extends Controller
 
     public function show_listCategory() {
 
-       $list_category = DB::table('tb_category_product')->get();
+       $list_category = DB::table('tb_category_product')->paginate(5);
        $manager_category = view('backend.category.list_category_product')->with('list_category',$list_category);
 
         return view('admin_layout')->with('backend.category.list_category_product',$manager_category);

@@ -49,7 +49,7 @@ class breedController extends Controller
         
        $list_breed = DB::table('tb_breed_product')
        ->join('tb_category_product','tb_breed_product.category_id','=','tb_category_product.category_id')
-       ->select('tb_breed_product.*','category_name')->get();
+       ->select('tb_breed_product.*','category_name')->paginate(5);
        $manager_breed = view('backend.breed.list_breed_product')->with('list_breed',$list_breed);
         return view('admin_layout')->with('backend.breed.list_breed_product',$manager_breed);
     }

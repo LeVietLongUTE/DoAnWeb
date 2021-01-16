@@ -52,7 +52,7 @@
 							<div class="panel panel-default">
 								@foreach($category as $key => $cate)   
 									<div class="panel-heading">
-										<h4 class="panel-title"><a style="color: orange"  href="{{URL::to('/danhmucsanpham/'.$cate->category_id)}}" >
+										<h4 class="panel-title"><a onclick="return false;" style="color: orange" disabled="true"  href="{{URL::to('/danhmucsanpham/'.$cate->category_id)}}" >
 											<?php
 											echo $cate->category_name;
 										?>

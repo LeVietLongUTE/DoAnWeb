@@ -17,7 +17,7 @@
           ?>
           @foreach ($list_product as $key => $product)
           <tr>
-            <td>Tên sản phẩm: </td>
+            <td style="width: 40%">Tên sản phẩm: </td>
             <td>{{$product->product_name}}</td>
           </tr> 
           <tr>

@@ -14,7 +14,7 @@
             <th>Tên danh mục sản phẩm</th>
             <th>Tên loại sản phẩm</th>
             <th>Hình ảnh chính</th>
-            <th>Tuổi</th>
+            {{-- <th>Tuổi</th> --}}
             <th>Giá</th>
             {{-- <th>Giới tính</th>
             <th>Tiêm vacxin</th>
@@ -34,13 +34,11 @@
           ?>
           @foreach ($list_product as $key => $product)
           <tr>
-           
-            
             <td>{{$product->product_name}}</td>
             <td>{{$product->category_name}}</td>
             <td>{{$product->breed_name}}</td>
             <td><img src="public/uploads/products/{{$product->product_image_main}}" height="100" width="100"></td>
-            <td>{{$product->product_age}}</td>
+            {{-- <td>{{$product->product_age}}</td> --}}
             <td>{{$product->product_price}}</td>
             {{-- <td><span class="text-ellipsis">
               <?php
@@ -81,6 +79,7 @@
         </tbody>
         @endforeach
       </table>
+      <div style="display: flex; justify-content: center" class="row" >{{$list_product->links()}}</div> 
     </div>
     <footer class="panel-footer">
       <div class="row">

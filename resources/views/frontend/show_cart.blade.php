@@ -58,6 +58,7 @@
             </td>
             </tr>
                 @endforeach
+                {{-- <div class="row" >{{$content->links()}}</div>  --}}
             </tbody> 
         <!-- // -->
             <tr  style=" width: 132%; display: flex; justify-content: space-around"> 

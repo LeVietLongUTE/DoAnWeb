@@ -11,7 +11,12 @@
                                 <img width="100px" height="300px"  src="{{asset('public/uploads/products/'.$prod->product_image_main)}}" alt="" />
                                 <h4>{{number_format($prod->product_price).' '.'VNĐ'}}</h4>
                                 <p>{{$prod->product_name}}</p>
-                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Buy</a>
+                                @foreach ($breed_data as $item)
+                                    {{-- @if ($item->breed_id == $prod->breed_id) --}}
+                                    <p>{{$item->breed_name}}</p>
+                                    {{-- @endif --}}
+                                @endforeach
+                                <a href="{{URL::to('/chi-tiet-san-pham/'.$prod->product_id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Xem chi tiết</a>
                             </div>
                             
                     </div>

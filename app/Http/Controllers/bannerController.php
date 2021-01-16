@@ -37,7 +37,7 @@ class bannerController extends Controller
 
     public function show_listBanner() {
 
-       $list_banner = DB::table('tb_banner')->get();
+       $list_banner = DB::table('tb_banner')->paginate(5);
        $manager_banner = view('backend.banner.list_banner')->with('list_banner',$list_banner);
 
         return view('admin_layout')->with('backend.banner.list_banner',$manager_banner);

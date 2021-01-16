@@ -47,7 +47,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--search & user info start-->
     <ul class="nav pull-right top-menu">
         <li>
-            <input type="text" class="form-control search" placeholder=" Search">
+            <div class="col-sm-12">
+                <form action="{{URL::to('/tim-kiem')}}" method="POST">
+                    {{ csrf_field() }}
+                    <div class="search_box pull-right" style="display: flex">
+                        <input style="margin-right:20px " type="text" name="Inputsearch"  placeholder="Tìm kiếm sản phẩm"/>
+                        <button type="submit" class="btn btn-warning btn-sm" >Tìm kiếm</button>
+                    </div>
+                </form>
+            </div>
         </li>
         <!-- user login dropdown start-->
         <li class="dropdown">
