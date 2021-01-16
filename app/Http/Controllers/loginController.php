@@ -32,7 +32,10 @@ class loginController extends Controller
     //move den trang tong quan cua admin
     public function show_dashboard() {
         $this->AuthLogin();
-        return view('backend.dashboard');
+        $product = DB::table('tb_product')->get();
+        $user = DB::table('users')->get();
+
+        return view('backend.dashboard')->with('product',$product)->with('user',$user);
     }
 
     //chuyen tran login
@@ -143,7 +146,7 @@ class loginController extends Controller
 
     public function show_listUser() {
         
-       $list_user = DB::table('users')->get();
+       $list_user = DB::table('users')->paginate(5);
        $manager_user = view('backend.users.list_user')->with('list_user',$list_user);
         return view('admin_layout')->with('backend.users.list_user',$manager_user);
     }

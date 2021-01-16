@@ -89,7 +89,7 @@ class productController extends Controller
        $list_product = DB::table('tb_product')
        ->join('tb_breed_product','tb_product.breed_id','=','tb_breed_product.breed_id')
        ->join('tb_category_product','tb_breed_product.category_id','=','tb_category_product.category_id')
-       ->select('tb_product.*','category_name','breed_name')->paginate(4);
+       ->select('tb_product.*','category_name','breed_name')->get();
     //    $phantrang = $list_product->paginate(3);
        $manager_product = view('backend.product.list_product')->with('list_product',$list_product)->with('data',$data)
       ;
@@ -258,11 +258,9 @@ class productController extends Controller
 
 
     }
+    // public function phantrang() {
+    //     $phantrang = product::paginate(3);
+    //     view('admin_layout',compact('phantrang'));
+    // }
 
-
-}
-
-
-
-
-
+    }

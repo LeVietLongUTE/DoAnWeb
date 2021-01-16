@@ -57,12 +57,13 @@
         </tbody>
         @endforeach
       </table>
+      <div style="display: flex; justify-content: center; margin-top:10px"  class="row" >{{$list_user->links()}}</div> 
     </div>
     <footer class="panel-footer">
       <div class="row">
         
         <div class=" text-center">
-          <a class=" btn btn-info"   href="{{URL::to('/add-user')}}" >Thêm loại sản phẩm</a>
+          <a class=" btn btn-info"   href="{{URL::to('/add-user')}}" >Thêm tài khoản</a>
         </div>
         {{-- <div class="col-sm-7 text-right text-center-xs">                
           <ul class="pagination pagination-sm m-t-none m-b-none">

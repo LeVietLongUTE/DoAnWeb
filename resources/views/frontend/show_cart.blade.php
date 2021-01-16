@@ -18,8 +18,7 @@
 				
     <h2 style="text-align: center; color:orange; font-weight: 800">Giỏ hàng</h2>
         <?php 
-            $content = Cart::content();
-            // echo '<pre>';
+            $content = Cart::content();            // echo '<pre>';
             // print_r();
             // echo '</pre>';
         ?>
@@ -60,6 +59,7 @@
                 @endforeach
                 {{-- <div class="row" >{{$content->links()}}</div>  --}}
             </tbody> 
+  
         <!-- // -->
             <tr  style=" width: 132%; display: flex; justify-content: space-around"> 
                 <td ><a href="{{URL::to('/')}}" class="btn btn-warning"><i class="fa fa-angle-left hidden-xs"></i> Tiếp tục mua hàng</a>

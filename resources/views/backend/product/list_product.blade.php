@@ -79,7 +79,7 @@
         </tbody>
         @endforeach
       </table>
-      <div style="display: flex; justify-content: center" class="row" >{{$list_product->links()}}</div> 
+      <div style="display: flex; justify-content: center; margin-top:10px"  class="row" >{{$list_product->links()}}</div> 
     </div>
     <footer class="panel-footer">
       <div class="row">
