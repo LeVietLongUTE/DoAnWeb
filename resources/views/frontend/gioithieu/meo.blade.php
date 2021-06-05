@@ -19,7 +19,20 @@
     
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head><!--/head-->
+<?php 
+$error = Session::get('error');
+$message = Session::get('message');
+if($error){
+    echo '<script>alert("'.$error.'");</script>';
+    Session::put('error',null);
+}else {
+    if($message){
+    echo '<script>alert("'.$message.'");</script>';
+    Session::put('message',null);
+    }	
+}
 
+?>
 <body>
 @include('frontend.header')
 	<!--/??-->

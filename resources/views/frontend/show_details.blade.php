@@ -7,7 +7,21 @@
 	}
 </style>
 
-				
+<?php 
+$error = Session::get('error');
+$message = Session::get('message');
+
+if($error){
+	echo '<script>alert("'.$error.'");</script>';
+	Session::put('error',null);
+}else {
+	if($message){
+	echo '<script>alert("'.$message.'");</script>';
+	Session::put('message',null);
+	}	
+}
+
+?>
 		@foreach ($product as $key => $prod)
 					<div class="product-details"><!--product-details-->
 		
@@ -106,27 +120,33 @@
 						<div class="tab-content">
 
 							<div class="tab-pane fade active in" id="reviews" >
+								
 								<div class="col-sm-12">
+									@foreach ($list_danhgia as $key2 => $danhgia)
 									<ul>
-										<li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
-										<li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-										<li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
+										<li><a href=""><i class="fa fa-user"></i>{{$danhgia->name}}</a></li>
+										<li><a href=""><i class="fa fa-clock-o"></i>{{$danhgia->NgayLap}}</a></li>
+										
 									</ul>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-									<p><b>Write Your Review</b></p>
+									<p>{{$danhgia->NoiDung}}</p>
+									<?php 
+										// echo '<pre>';
+										// print_r($danhgia);
+										// echo '</pre>';
+									?>
+										@endforeach
+									<?><b>Viết nội dung đánh giá của bạn</b></?>
 									
-									<form action="#">
-										<span>
-											<input type="text" placeholder="Your Name"/>
-											<input type="email" placeholder="Email Address"/>
-										</span>
-										<textarea name="" ></textarea>
-										<b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
-										<button type="button" class="btn btn-default pull-right">
+									<form action="{{URL::to('/save-danh-gia/'.$prod->product_id)}}" method="POST">
+										{{ csrf_field() }}
+										<textarea name="noidung" ></textarea>
+										<button type="submit" class="btn btn-default pull-right">
 											Submit
 										</button>
 									</form>
+								
 								</div>
+								
 							</div>
 							
 						</div>
@@ -145,7 +165,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													{{-- @if ($related->breed_id == $prod->breed_id) --}}
+													
 														<img width="100px" height="300px" style="display: inline" src="{{asset('public/uploads/products/'.$related->product_image_main)}}" alt="" />
 														<h3 style=" font-weight: 600; color: black">{{$related->product_name}}</h3>
 														<h4 style=" font-weight: 600; color: black">{{$related->breed_name}}</h4>
@@ -153,11 +173,7 @@
 														 {{number_format($related->product_price).' '.'VNĐ'}}
 															</h4>
 														<a href="{{URL::to('/chi-tiet-san-pham/'.$related->product_id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Xem chi tiết</a> 
-													{{-- @endif --}}
-													{{-- <img src="{{asset('public/frontend/images/home/recommend1.jpg')}}" alt="" />
 													
-													
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
 												</div>
 											</div>
 										</div>
@@ -165,18 +181,7 @@
 									</div>
 									</a>
 									@endforeach	
-									{{-- <div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{{asset('public/frontend/images/home/recommend1.jpg')}}" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-											</div>
-										</div>
-									</div> --}}
+									
 									
 								</div>
 								<div class="item">	
@@ -187,7 +192,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													{{-- @if ($related->breed_id == $prod->breed_id) --}}
+													
 														<img width="100px" height="300px" style="display: inline" src="{{asset('public/uploads/products/'.$related->product_image_main)}}" alt="" />
 														<h3 style=" font-weight: 600; color: black" >{{$related->product_name}}</h3>
 														<h4 style=" font-weight: 600; color: black">{{$related->breed_name}}</h4>
@@ -197,11 +202,7 @@
 															
 															VND</h4>
 														<a href="{{URL::to('/chi-tiet-san-pham/'.$related->product_id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Xem chi tiết</a> 
-													{{-- @endif --}}
-													{{-- <img src="{{asset('public/frontend/images/home/recommend1.jpg')}}" alt="" />
-													
-													
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
+												
 												</div>
 											</div>
 										</div>

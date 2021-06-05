@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Directory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
+use Gloudemans\Shoppingcart\Facades\Cart;
 session_start();
 class HomeController extends Controller
 {
@@ -114,6 +116,17 @@ class HomeController extends Controller
         ->select('tb_product.*','tb_breed_product.breed_name')->where('product_status',1)->orderby('product_id','desc')->limit(3)->get();
         return view('frontend.store')->with('product',$product)->with('list_slide',$list_slide)->with('category',$list_category)
         ->with('breed',$list_breed)->with('related',$list_product2);
+    }
+
+
+    public function show_dat_hang() {
+        $data__ = Cart::content();
+        foreach ($data__ as $key => $value) {
+            # code...
+            
+
+        }
+        return view('frontend.dathang');
     }
 
 }

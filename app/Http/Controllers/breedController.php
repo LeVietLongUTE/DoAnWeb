@@ -14,7 +14,14 @@ class breedController extends Controller
     public function show_formAddBreed() {
         $list_category = DB::table('tb_category_product')->get();
         $manager_category = view('backend.breed.add_breed_product')->with('list_category',$list_category);
-        return view('admin_layout')->with('backend.breed.add_breed_product',$manager_category);
+
+        if(Session::get('id') and Session::get('level')==1 )
+        {
+            return view('admin_layout')->with('backend.breed.add_breed_product',$manager_category);
+         }
+       else
+           return Redirect()->back()->with('message','Bạn không có quyền truy cập vào trang này.');
+        
     }
 
     public function save_breedProduct(Request $request) {
@@ -51,7 +58,15 @@ class breedController extends Controller
        ->join('tb_category_product','tb_breed_product.category_id','=','tb_category_product.category_id')
        ->select('tb_breed_product.*','category_name')->paginate(5);
        $manager_breed = view('backend.breed.list_breed_product')->with('list_breed',$list_breed);
-        return view('admin_layout')->with('backend.breed.list_breed_product',$manager_breed);
+
+        if(Session::get('id') and Session::get('level')==1 )
+        {
+            return view('admin_layout')->with('backend.breed.list_breed_product',$manager_breed);
+        }
+        else
+           return Redirect()->back()->with('message','Bạn không có quyền truy cập vào trang này.');
+       
+        
     }
     //Thay đổi ẩn hiện breed
     public function un_active_breed($breed_product_id) {
@@ -74,8 +89,15 @@ class breedController extends Controller
         ->join('tb_category_product','tb_breed_product.category_id','=','tb_category_product.category_id')
         ->select('tb_breed_product.*','category_name')-> where('breed_id',$breed_product_id)->get();
         $manager_breed = view('backend.breed.edit_breed_product')->with('edit_breed',$edit_breed)->with('list_category',$list_category);
-       
-        return view('admin_layout')->with('backend.breed.edit_breed_product',$manager_breed);
+        
+        if(Session::get('id') and Session::get('level')==1 )
+        {
+            return view('admin_layout')->with('backend.breed.edit_breed_product',$manager_breed);
+        }
+        else
+           return Redirect()->back()->with('message','Bạn không có quyền truy cập vào trang này.');
+
+        
 
     }
     public function update_breedProduct ( Request $request, $breed_product_id) {

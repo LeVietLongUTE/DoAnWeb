@@ -3,7 +3,7 @@
 <div class="table-agile-info">
 <div class="panel panel-default">
     <div class="panel-heading">
-      Danh sách loại sản phẩm
+      Danh sách Banner
     </div>
     <div class="table-responsive">
       <table class="table table-striped b-t b-light">

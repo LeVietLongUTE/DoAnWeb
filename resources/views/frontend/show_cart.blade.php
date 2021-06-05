@@ -27,7 +27,7 @@
             <tr> 
                 <th style="width:25% ">Thông tin sản phẩm</th> 
                 <th style="width:5%">Giá</th>  
-                <th style="width:1%">Xóa </th> 
+                <th style="width:1%">Thao tác </th> 
             </tr> 
            <!-- // -->
             </thead> 
@@ -61,12 +61,12 @@
             </tbody> 
   
         <!-- // -->
-            <tr  style=" width: 132%; display: flex; justify-content: space-around"> 
+            <tr  style=" width: 125%; display: flex; justify-content: space-around"> 
                 <td ><a href="{{URL::to('/')}}" class="btn btn-warning"><i class="fa fa-angle-left hidden-xs"></i> Tiếp tục mua hàng</a>
                 </td>   
                 <td class="hidden-xs text-center"><strong>Tổng tiền <span>{{Cart::priceTotal().' '. 'VNĐ'}}</span></strong>
                 </td> 
-                <td ><a  class="btn btn-success btn-block">Thanh toán <i class="fa fa-angle-right"></i></a>
+                <td ><a href="{{URL::to('/dat-hang')}}" class="btn btn-success btn-block">Đặt hàng <i class="fa fa-angle-right"></i></a>
                 </td> 
             </tr> 
             </table>

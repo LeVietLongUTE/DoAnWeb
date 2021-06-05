@@ -46,17 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="top-nav clearfix">
     <!--search & user info start-->
     <ul class="nav pull-right top-menu">
-        <li>
-            <div class="col-sm-12">
-                <form action="{{URL::to('/tim-kiem')}}" method="POST">
-                    {{ csrf_field() }}
-                    <div class="search_box pull-right" style="display: flex">
-                        <input style="margin-right:20px " type="text" name="Inputsearch"  placeholder="Tìm kiếm sản phẩm"/>
-                        <button type="submit" class="btn btn-warning btn-sm" >Tìm kiếm</button>
-                    </div>
-                </form>
-            </div>
-        </li>
+       
         <!-- user login dropdown start-->
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -76,9 +66,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
-                <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                <li><a href="{{URL::to('/logout')}}"><i class="fa fa-key"></i> Log Out</a></li>
+                <li><a href="{{URL::to('/trang-chu')}}"><i class="fa fa-cog"></i> Về cửa hàng</a></li>
+                <li><a href="{{URL::to('/logout')}}"><i class="fa fa-key"></i> Đăng xuất</a></li>
             </ul>
         </li>
         <!-- user login dropdown end -->
@@ -139,6 +128,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a href="{{URL::to('/add-product')}}">Thêm sản phẩm</a></li>
 						<li><a href="{{URL::to('/list-product')}}">List sản phẩm</a></li>
                     </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="{{URL::to('/list-bill')}}">
+                        <i class="fa fa-archive"></i>
+                        <span>Xét duyệt hóa đơn</span>
+                    </a>
+                    
                 </li>
                
                 <li>

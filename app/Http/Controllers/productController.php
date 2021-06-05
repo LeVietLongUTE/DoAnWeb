@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
+use Carbon\Carbon;
 use App\product;
 session_start();
 class productController extends Controller
@@ -14,7 +15,14 @@ class productController extends Controller
     public function show_formAddProduct() {
         $list_breed = DB::table('tb_breed_product')->get();
         $manager_breed = view('backend.product.add_product')->with('list_breed',$list_breed);
-        return view('admin_layout')->with('backend.add_product',$manager_breed);
+        if(Session::get('id') and Session::get('level')==1 )
+        {
+            return view('admin_layout')->with('backend.add_product',$manager_breed);
+        }
+        else
+            return Redirect()->back()->with('message','Bạn không có quyền truy cập vào trang này.');
+
+        
     }
 
     public function save_Product(Request $request) {
@@ -29,7 +37,7 @@ class productController extends Controller
             'product_name' => $request->nameProduct,
             'product_tiem' => $request->tiemProduct,
             'product_xuatxu' => $request->xuatxuProduct,
-            // 'product_image' => $request->file('imageProduct'),
+           
             'product_age' => $request->ageProduct,
             'product_price' => $request->priceProduct,
             'product_description' => $request->description,
@@ -85,16 +93,21 @@ class productController extends Controller
     }
 
     public function show_listProduct() {
-        $data = DB::table('tb_product')->get();
+        // $data = DB::table('tb_product')->get();
        $list_product = DB::table('tb_product')
        ->join('tb_breed_product','tb_product.breed_id','=','tb_breed_product.breed_id')
        ->join('tb_category_product','tb_breed_product.category_id','=','tb_category_product.category_id')
-       ->select('tb_product.*','category_name','breed_name')->paginate(5);
-       $manager_product = view('backend.product.list_product')->with('list_product',$list_product)->with('data',$data)
+       ->select('tb_product.*','category_name','breed_name')->orderBy('product_id','desc')->paginate(5);
+       $manager_product = view('backend.product.list_product')->with('list_product',$list_product)
       ;
-
+      if(Session::get('id') and Session::get('level')==1 )
+      {
+            return view('admin_layout')->with('backend.product.list_product',$manager_product);
+      }
+      else
+          return Redirect()->back()->with('message','Bạn không có quyền truy cập vào trang này.');
        
-        return view('admin_layout')->with('backend.product.list_product',$manager_product);
+       
     }
     //Thay đổi ẩn hiện product
     public function un_active_product($product_id) {
@@ -117,8 +130,13 @@ class productController extends Controller
         ->join('tb_breed_product','tb_product.breed_id','=','tb_breed_product.breed_id')
         ->select('tb_product.*','breed_name')-> where('product_id',$product_id)->get();
         $manager_product = view('backend.product.edit_product')->with('edit_product',$edit_product)->with('list_breed',$list_breed);
-      
-        return view('admin_layout')->with('backend.product.edit_product',$manager_product);
+        if(Session::get('id') and Session::get('level')==1 )
+        {
+            return view('admin_layout')->with('backend.product.edit_product',$manager_product);
+        }
+        else
+            return Redirect()->back()->with('message','Bạn không có quyền truy cập vào trang này.');
+        
 
     }
     public function update_product ( Request $request, $product_id) {
@@ -216,7 +234,15 @@ class productController extends Controller
        ->join('tb_category_product','tb_breed_product.category_id','=','tb_category_product.category_id')
        ->select('tb_product.*','category_name','breed_name')->where('product_id',$product_id)->get();
        $manager_product = view('backend.product.view_product')->with('list_product',$list_product);
+       
+       if(Session::get('id') and Session::get('level')==1 )
+       {
         return view('admin_layout')->with('backend.product.view_product',$manager_product);
+       }
+       else
+           return Redirect()->back()->with('message','Bạn không có quyền truy cập vào trang này.');
+
+        
     }
 
 
@@ -240,8 +266,19 @@ class productController extends Controller
         $list_slide = DB::table('tb_banner')->where('banner_status',1)->get();
         $list_bannerD = DB::table('tb_banner')->where('banner_status',1)->where('banner_note',0)->get()->first();
 
+
+        $list_danhgia = DB::table('tb_danhgia')->join('users','users.id','=','tb_danhgia.idND')
+        ->select('tb_danhgia.*','name','email')->where('tb_danhgia.MaSP',$product_id)
+        ->orderBy('id','desc')->get();
+
+        // echo '<pre>';
+        // print_r($list_danhgia->id);
+        // echo '</pre>';
+
         return view('frontend.show_details')->with('category',$list_category)->with('breed',$list_breed)->with('product',$list_product)
-        ->with('list_slide',$list_slide)->with('bannerD',$list_bannerD)->with('related_product',$related_product);
+        ->with('list_slide',$list_slide)->with('bannerD',$list_bannerD)->with('related_product',$related_product)
+        ->with('list_danhgia',$list_danhgia);
+        
 
 
     }
@@ -250,4 +287,39 @@ class productController extends Controller
     //     view('admin_layout',compact('phantrang'));
     // }
 
-    }
+        public function save_danh_gia($MaSP, Request $request) {
+            
+            if (Session::get('id')){
+                $data__ = DB::table('tb_bill')->join('tb_chi_tiet_bill','tb_bill.id','=','tb_chi_tiet_bill.MaHD')
+                ->select('tb_chi_tiet_bill.MaSP','tb_bill.idND','tb_bill.TrangThai')->where('tb_bill.idND',Session::get('id'))
+                ->where('tb_chi_tiet_bill.MaSP',$MaSP)->where('tb_bill.TrangThai','1')->get('TrangThai')->first();
+                Session::put('danhgia',$data__);
+                if(Session::get('danhgia')!="") {
+                    $data = [
+                        'idND' => Session::get('id'),
+                        'MaSP' => $MaSP,
+                        'NgayLap' => Carbon::now('Asia/Ho_Chi_Minh')->toDateTimeString(),
+                        'NoiDung' => $request->noidung
+                    ];
+                    if ($request->noidung) {
+                        DB::table('tb_danhgia')->insert($data);
+                        return Redirect()->back()->with('message','Thêm đánh giá thành công');
+                        // echo '<pre>';
+                        // print_r(Session::get('danhgia'));
+                        // echo '</pre>';
+                    }else {
+                        return Redirect()->back()->with('message','Bạn đã nhập rỗng dữ liệu không được phép');
+                    }
+
+                }else {
+                    return Redirect()->back()->with('message','Xin lỗi nhưng đơn hàng của bạn được duyệt mới có thể đánh giá sản phẩm này');
+                }
+
+               
+            }else {
+                return Redirect()->back()->with('message','Vui lòng đăng nhập để đánh giá sản phẩm');
+            }
+            
+        }
+
+}

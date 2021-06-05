@@ -1,14 +1,6 @@
 @extends('admin_layout')
 @section('content_dashboard')
-<h3>Chao admin 
 
-    <?php
-        $id = Session::get('id');
-        echo $id;
-        $level = Session::get('level');
-        echo $level;
-        ?>    
-</h3>
 <div class="market-updates" style="display: flex; justify-content: space-around">
 
    
@@ -112,8 +104,14 @@
                 <i class="fa fa-users" ></i>
             </div>
             <div class="col-md-8 market-update-left">
-            <h4>Doanh thu tháng này</h4>
-                <h3>0</h3>
+                <?php $money = 0; ?>
+                @foreach ($bill as $item)
+                    
+                        <?php $money += (int) $item->TongTien; ?> 
+                    
+                @endforeach
+            <h4>Tổng Danh Thu</h4>
+                <h3>0 VNĐ</h3>
             </div>
           <div class="clearfix"> </div>
         </div>
@@ -125,7 +123,13 @@
             </div>
             <div class="col-md-8 market-update-left">
             <h4>Hóa đơn chưa duyệt</h4>
-                <h3>0</h3>
+            <?php $i=0; ?>
+            @foreach ($bill as $item)
+                @if($item->TrangThai == '0')
+                    <?php $i++ ?>
+                    @endif
+            @endforeach
+                <h3><?php echo $i; ?></h3>
             </div>
           <div class="clearfix"> </div>
         </div>

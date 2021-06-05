@@ -12,7 +12,13 @@ session_start();
 class bannerController extends Controller
 {
     public function show_formAddBanner() {
-        return view('backend.banner.add_banner');
+        if(Session::get('id') and Session::get('level')==1 )
+        {
+            return view('backend.banner.add_banner');
+        }
+        else
+            return Redirect()->back()->with('message','Bạn không có quyền truy cập vào trang này.');
+       
     }
     public function save_Banner(Request $request) {
         $data = array();
@@ -40,7 +46,14 @@ class bannerController extends Controller
        $list_banner = DB::table('tb_banner')->paginate(5);
        $manager_banner = view('backend.banner.list_banner')->with('list_banner',$list_banner);
         
-        return view('admin_layout')->with('backend.banner.list_banner',$manager_banner);
+       if(Session::get('id') and Session::get('level')==1 )
+       {
+            return view('admin_layout')->with('backend.banner.list_banner',$manager_banner);
+       }
+       else
+           return Redirect()->back()->with('message','Bạn không có quyền truy cập vào trang này.');
+
+        
     }
     //Thay đổi ẩn hiện banner
     public function un_active_banner($banner_id) {
@@ -60,7 +73,13 @@ class bannerController extends Controller
         $edit_banner = DB::table('tb_banner')->where('banner_id',$banner_id)->get();
         $manager_banner = view('backend.banner.edit_banner')->with('edit_banner',$edit_banner);
 
-        return view('admin_layout')->with('backend.banner.edit_banner',$manager_banner);
+        if(Session::get('id') and Session::get('level')==1 )
+        {
+            return view('admin_layout')->with('backend.banner.edit_banner',$manager_banner);
+         }
+       else
+           return Redirect()->back()->with('message','Bạn không có quyền truy cập vào trang này.');
+        
 
     }
     public function update_banner ( Request $request, $banner_id) {

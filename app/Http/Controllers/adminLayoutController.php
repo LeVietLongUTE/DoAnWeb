@@ -17,19 +17,16 @@ class adminLayoutController extends Controller
         # code...
         return view('admin_layout');
     }
-    public function AuthLogin() {
-        $admin_id = Session::get('id');
-        if ($admin_id) {
-            return Redirect::to('backend.dashboard');
-        }else {
-           return Redirect::to('login');
-        }
-    }
-
     
     //Category controller
     public function show_formAddCategory() {
-        return view('backend.category.add_category_product');
+        if(Session::get('id') and Session::get('level')==1 )
+        {
+            return view('backend.category.add_category_product');
+        }
+       else
+           return Redirect()->back()->with('message','Bạn không có quyền truy cập vào trang này.');
+     
     }
     public function save_categoryProduct(Request $request) {
         $data = array();
@@ -61,7 +58,14 @@ class adminLayoutController extends Controller
        $list_category = DB::table('tb_category_product')->paginate(5);
        $manager_category = view('backend.category.list_category_product')->with('list_category',$list_category);
 
+       if(Session::get('id') and Session::get('level')==1 )
+       {
         return view('admin_layout')->with('backend.category.list_category_product',$manager_category);
+       }
+        else
+            return Redirect()->back()->with('message','Bạn không có quyền truy cập vào trang này.');
+
+        
     }
     //Thay đổi ẩn hiện category
     public function un_active_category($category_product_id) {
@@ -81,7 +85,14 @@ class adminLayoutController extends Controller
         $edit_category = DB::table('tb_category_product')->where('category_id',$category_product_id)->get();
         $manager_category = view('backend.category.edit_category_product')->with('edit_category',$edit_category);
 
-        return view('admin_layout')->with('backend.category.edit_category_product',$manager_category);
+        if(Session::get('id') and Session::get('level')==1 )
+        {
+            return view('admin_layout')->with('backend.category.edit_category_product',$manager_category);
+        }
+        else
+            return Redirect()->back()->with('message','Bạn không có quyền truy cập vào trang này.');
+
+       
 
     }
     public function update_categoryProduct ( Request $request, $category_product_id) {

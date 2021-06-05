@@ -1,4 +1,7 @@
 <?php
+
+use App\Http\Controllers\billController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +24,8 @@ Route::get('/tim-kiem','HomeController@search');
 
 Route::get('/cua-hang/{category_name}/{breed_name}','HomeController@store');
 Route::get('/cua-hang','HomeController@store_product');
+
+Route::get('/dat-hang','HomeController@show_dat_hang');
 
 /* ---- Back End ---- */
 
@@ -253,5 +258,16 @@ Route::post('/cart','CarController@show_cart');
 
 Route::get('/delete-to-cart/{rowId}','CarController@delete_to_cart');
 
+//Hoa Don
+Route::get('/list-bill','billController@show_listBill');
+Route::POST('/save-bill','billController@save_bill');
+Route::get('/save-bill','billController@save_bill');
+Route::get('/list-bill/hd-da-duyet','billController@da_duyet');
+Route::get('/list-bill/hd-chua-duyet','billController@chua_duyet');
+Route::get('/list-bill/view-don-hang/{MaHD}','billController@view_don_hang');
+Route::get('/list-bill/delete-don-hang/{MaHD}','billController@delete_bill');
+Route::get('/active-bill/{MaHD}','billController@active_bill');
+
+Route::post('/save-danh-gia/{MaSP}','productController@save_danh_gia');
 
 ?>

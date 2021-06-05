@@ -12,30 +12,21 @@ use Illuminate\Support\Facades\Auth;
 session_start();
 class loginController extends Controller
 {
-    public function AuthLogin() {
-        $admin_id = Session::get('id');
-        $level = Session::get('level');
-        if ($admin_id && $level == 1){
-            return Redirect::to('dashboard');
-            
-        }else{
-            return Redirect::to('login');
-        }
-        // if (Auth::check()&&$level==1)
-        //     {
-        //         return Redirect::intended('dashboard');
-        //     }else{
-        //         return Redirect::intended('login');
-        //     }
-    }
-
+   
     //move den trang tong quan cua admin
     public function show_dashboard() {
-        $this->AuthLogin();
+        // $this->AuthLogin();
         $product = DB::table('tb_product')->get();
         $user = DB::table('users')->get();
+        $donH = DB::table('tb_bill')->get();
+        if(Session::get('id') and Session::get('level')==1 )
+        {
+            return view('backend.dashboard')->with('product',$product)->with('user',$user)->with('bill',$donH);
+        }
+        else
+            return Redirect()->back()->with('message','Bạn không có quyền truy cập vào trang này.');
 
-        return view('backend.dashboard')->with('product',$product)->with('user',$user);
+       
     }
 
     //chuyen tran login
@@ -44,33 +35,42 @@ class loginController extends Controller
     }
     public function loginadmin(Request $request) {
        
-        $admin_email = $request->admin_email;
-        $admin_password = md5($request->admin_pass);
-        $result = DB::table('users')->where('email',$admin_email)->where('password',$admin_password)->where('level',1)->first();
-        $result1 = DB::table('users')->where('email',$admin_email)->where('password',$admin_password)->where('level',0)->first();
-        if ($result){
-            Session::put('name',$result->name);
-            Session::put('id',$result->id);
-            Session::put('level',1);
-            return Redirect::to('/dashboard');
-          
-        }else{
-            if ($result1){
-                Session::put('name',$result1->name);
-                Session::put('id',$result1->id);
-                Session::put('level',0);
-                return Redirect::to('/trang-chu');
-            }else {
-            Session::put('message','Đăng nhập thất bại');
-            return Redirect::to('/login');
+
+
+            // $admin_email = $request->admin_email;
+            // $admin_password = md5($request->admin_pass);
+
+        
+            $email= $request->admin_email;
+            $password=md5($request->admin_pass);
+            
+            $session= User::where('email',$email)->where('password',$password)->get();
+            if(count($session)>0)
+            {
+                $request->session()->put('id',$session[0]->id);
+                $request->session()->put('name',$session[0]->name);
+                $request->session()->put('level',$session[0]->level);
+                // return view('Đăng nhập thành công');
+                if ($request->session()->get('level',1)){
+                    return Redirect::to('/dashboard');
+                }else {
+                    return Redirect::to('/');
+                }
+               
             }
-        }
+            else{
+                // return view('Đăng nhập thất bại');
+                return Redirect::to('/login')->with('message','Đăng nhập lỗi');
+            }
     }
     public function logout(){
-        $this->AuthLogin();
-        // Session::put('name',null);
-        // Session::put('id',null);
         Session::flush();
+        echo '<pre>';
+        print_r(Session::get('id'));
+        print_r(Session::get('name'));
+        print_r(Session::get('level'));
+   
+        echo '</pre>';
         return Redirect::to('/login');
     }
     public function show_register() {
@@ -78,20 +78,6 @@ class loginController extends Controller
     }
     public function register(Request $request)
     {
-        # code...
-        // $this->validate(request(), [
-        //     'name' => 'required',
-        //     'email' => 'required|email',
-        //     'password' => 'required'
-        // ]);
-
-        
-        // return User::create(Request([
-        //     'email' => $data['email'],
-        //     'password' => bcrypt($data['password']),
-        //     'name' => $data['name'],
-        //     'level' => 0
-        // ]));
 
         $data = [
             'email' => $request->email,
@@ -109,7 +95,7 @@ class loginController extends Controller
             }else{
                 DB::table('users')->insert($data);
                 Session::put('message','Đăng ký tài khoản thành công');
-                return Redirect::to('/register');
+                return Redirect::to('/login');
             }
         }
 
@@ -117,7 +103,13 @@ class loginController extends Controller
     }
 
     public function show_formAddUser() {
+        if(Session::get('id') and Session::get('level')==1 )
+       {
         return view('backend.users.add_user');
+       }
+       else
+           return Redirect()->back()->with('message','Bạn không có quyền truy cập vào trang này.');
+        
     }
 
     public function save_User(Request $request) {
@@ -148,7 +140,13 @@ class loginController extends Controller
         
        $list_user = DB::table('users')->paginate(5);
        $manager_user = view('backend.users.list_user')->with('list_user',$list_user);
+       if(Session::get('id') and Session::get('level')==1 )
+       {
         return view('admin_layout')->with('backend.users.list_user',$manager_user);
+       }
+       else
+           return Redirect()->back()->with('message','Bạn không có quyền truy cập vào trang này.');
+
     }
 
 
@@ -157,8 +155,14 @@ class loginController extends Controller
 
         $edit_user = DB::table('users')->where('id',$user_id)->get();
         $manager_user = view('backend.users.edit_user')->with('edit_user',$edit_user);
-       
-        return view('admin_layout')->with('backend.user.edit_user',$manager_user);
+        
+        if(Session::get('id') and Session::get('level')==1 )
+        {
+            return view('admin_layout')->with('backend.user.edit_user',$manager_user);
+        }
+       else
+           return Redirect()->back()->with('message','Bạn không có quyền truy cập vào trang này.');
+        
 
     }
     public function update_user ( Request $request, $user_id) {

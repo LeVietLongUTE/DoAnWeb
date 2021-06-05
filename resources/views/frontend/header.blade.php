@@ -38,14 +38,39 @@
 				<div class="col-sm-6">
 					<div class="shop-menu pull-right">
 						<ul class="nav navbar-nav">
-						<li><a href="{{URL::to('cart')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
-							@if(Auth::check())
-							<li><a href="#"><i class="fa fa-lock"></i> Chào Bạn{{Auth::users()->name}}</a>
-							<li><a href="{{URL::to('/logout')}}"><i class="fa fa-key"></i> Đăng xuất</a></li>
-							
+						<li style="margin-top: 5px"><a href="{{URL::to('cart')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+							@if (Session::get('id'))
+								<li class="dropdown" style="background: white">
+									<a style="background: white"  data-toggle="dropdown" class="dropdown-toggle" href="#">
+										<img style="width: 30px" alt="" src="{{asset('public/backend/images/2.png')}}">
+										<span class="username">
+										<?php 
+											$name = Session::get('name');
+											$id = Session::get('id');
+											if($name){
+												// echo '<script>alert('.$message.');</script>';
+												echo $name.'';
+						
+												Session::put('message',null);
+											}	
+										?>
+										</span>
+										<b class="caret"></b>
+									</a>
+									<ul class="dropdown-menu extended logout">
+										
+										@if (Session::get('id') and Session::get('level')==1 )
+											<li><a href="{{URL::to('/dashboard')}}"><i class="fa fa-cog"></i> Trang quản trị</a></li>
+										@else 
+										
+										@endif
+										
+										<li><a href="{{URL::to('/logout')}}"><i class="fa fa-key"></i> Đăng xuất</a></li>
+									</ul>
+								</li>
 							@else
-							<li><a href="#"><i class="fa fa-user"></i> Tài khoản</a></li>
-							<li><a href="{{URL::to('/login')}}"><i class="fa fa-lock"></i> Đăng nhập</a>
+							
+							<li style="margin-top: 5px"><a href="{{URL::to('/login')}}"><i class="fa fa-lock"></i> Đăng nhập</a>
 							@endif
 							</ul>
 						</li>
@@ -75,7 +100,7 @@
 						<ul class="nav navbar-nav collapse navbar-collapse">
 							<li><a href="{{URL::to('/')}}" class="active">Trang Chủ</a></li>					
 							<li><a href="{{URL::to('cua-hang')}}">Cửa hàng</a></li> 						
-							<li><a href="#">Thanh Toán</a></li> 
+							<li><a href="{{URL::to('dat-hang')}}">Thanh Toán</a></li> 
 							
 							<li class="dropdown"><a href="{{URL::to('/gioithieus')}}">Giới thiệu<i class="fa fa-angle-down"></i></a>
 								<ul role="menu" class="sub-menu">
